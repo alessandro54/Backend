@@ -12,28 +12,28 @@ public class UserRepository : BaseRepository, IUserRepository
     {
     }
 
-    public async Task<IEnumerable<User>> ListAsync()
+    public async Task<IEnumerable<UserType>> ListAsync()
     {
         return await _context.Users.ToListAsync();
     }
 
-    public async Task<User> FindByIdAsync(int id)
+    public async Task<UserType> FindByIdAsync(int id)
     {
         return await _context.Users.FindAsync(id);
     }
 
-    public async Task AddAsync(User user)
+    public async Task AddAsync(UserType userType)
     {
-        await _context.Users.AddAsync(user);
+        await _context.Users.AddAsync(userType);
     }
 
-    public void Update(User user)
+    public void Update(UserType userType)
     {
-        _context.Users.Update(user);
+        _context.Users.Update(userType);
     }
 
-    public void Remove(User user)
+    public void Remove(UserType userType)
     {
-        _context.Users.Remove(user);
+        _context.Users.Remove(userType);
     }
 }

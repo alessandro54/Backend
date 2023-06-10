@@ -8,7 +8,7 @@ public class ResourceToModelProfile : Profile
 {
     public ResourceToModelProfile()
     {
-        CreateMap<SaveUserResource, User>();
+        CreateMap<SaveUserResource, UserType>();
         CreateMap<SavePublicationResource, Publication>();
     }
 }

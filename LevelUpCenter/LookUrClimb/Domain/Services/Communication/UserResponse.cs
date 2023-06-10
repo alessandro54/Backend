@@ -3,13 +3,13 @@ using LevelUpCenter.Shared.Domain.Services.Communication;
 
 namespace LevelUpCenter.Home.Domain.Services.Communication;
 
-public class UserResponse : BaseResponse<User>
+public class UserResponse : BaseResponse<UserType>
 {
     public UserResponse(string message) : base(message)
     {
     }
 
-    public UserResponse(User resource) : base(resource)
+    public UserResponse(UserType resource) : base(resource)
     {
     }
 }

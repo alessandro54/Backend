@@ -6,9 +6,10 @@ namespace LevelUpCenter.Shared.Persistence.Contexts;
 
 public class AppDbContext : DbContext
 {
-    public DbSet<User> Users { get; set; }
+    public DbSet<UserType> Users { get; set; }
     public DbSet<Publication> Publications { get; set; }
     
+
     public AppDbContext(DbContextOptions options) : base(options)
     {
     }
@@ -17,15 +18,14 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(builder);
 
-        builder.Entity<User>().ToTable("Users");
-        builder.Entity<User>().HasKey(p => p.Id);
-        builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<User>().Property(p => p.Code).IsRequired();
-        builder.Entity<User>().Property(p => p.Name).IsRequired().HasMaxLength(30);
+        builder.Entity<UserType>().ToTable("User Type");
+        builder.Entity<UserType>().HasKey(p => p.Id);
+        builder.Entity<UserType>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<UserType>().Property(p => p.TypeOfUser).IsRequired();
         //relationships
-        builder.Entity<User>()
+        builder.Entity<UserType>()
             .HasMany(p => p.Publications)
-            .WithOne(p => p.User)
+            .WithOne(p => p.UserType)
             .HasForeignKey(p => p.UserId);
 
         builder.Entity<Publication>().ToTable("Publications");

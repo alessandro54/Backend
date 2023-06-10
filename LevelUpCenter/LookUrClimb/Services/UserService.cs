@@ -16,18 +16,18 @@ public class UserService : IUserService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<IEnumerable<User>> ListAsync()
+    public async Task<IEnumerable<UserType>> ListAsync()
     {
         return await _userRepository.ListAsync();
     }
 
-    public async Task<UserResponse> SaveAsync(User user)
+    public async Task<UserResponse> SaveAsync(UserType userType)
     {
         try
         {
-            await _userRepository.AddAsync(user);
+            await _userRepository.AddAsync(userType);
             await _unitOfWork.CompleteAsync();
-            return new UserResponse(user);
+            return new UserResponse(userType);
         }
         catch (Exception e)
         {
@@ -35,18 +35,15 @@ public class UserService : IUserService
         }
     }
 
-    public async Task<UserResponse> UpdateAsync(int id, User user)
+    public async Task<UserResponse> UpdateAsync(int id, UserType userType)
     {
         var existingUser = await _userRepository.FindByIdAsync(id);
 
         if (existingUser == null)
             return new UserResponse("User not found");
 
-        existingUser.Code = user.Code;
-        existingUser.Name = user.Name;
-        existingUser.LastName = user.LastName;
-        existingUser.UrlImage = user.UrlImage;
-        
+        existingUser.TypeOfUser = userType.TypeOfUser;
+
         try
         {
             _userRepository.Update(existingUser);

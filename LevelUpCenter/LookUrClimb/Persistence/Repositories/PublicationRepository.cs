@@ -14,13 +14,13 @@ public class PublicationRepository : BaseRepository, IPublicationRepository
     
     public async Task<IEnumerable<Publication>> ListAsync()
     {
-        return await _context.Publications.Include(p => p.User).ToListAsync();
+        return await _context.Publications.Include(p => p.UserType).ToListAsync();
     }
 
     public async Task<Publication> FindByIdAsync(int tutorialId)
     {
         return await _context.Publications
-            .Include(p => p.User)
+            .Include(p => p.UserType)
             .FirstOrDefaultAsync(p => p.Id == tutorialId);
     }
 
@@ -28,7 +28,7 @@ public class PublicationRepository : BaseRepository, IPublicationRepository
     {
         return await _context.Publications
             .Where(p => p.UserId == userId)
-            .Include(p => p.User)
+            .Include(p => p.UserType)
             .ToListAsync();
     }
 

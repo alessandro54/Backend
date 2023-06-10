@@ -6,8 +6,8 @@ namespace LevelUpCenter.Home.Domain.Services;
 public interface IUserService
 {
     //CRUD
-    Task<IEnumerable<User>> ListAsync();
-    Task<UserResponse> SaveAsync(User user);
-    Task<UserResponse> UpdateAsync(int id, User user);
+    Task<IEnumerable<UserType>> ListAsync();
+    Task<UserResponse> SaveAsync(UserType userType);
+    Task<UserResponse> UpdateAsync(int id, UserType userType);
     Task<UserResponse> DeleteAsync(int id);
 }
