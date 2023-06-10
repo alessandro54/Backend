@@ -9,7 +9,5 @@ public class BaseRepository
     public BaseRepository(AppDbContext context)
     {
         _context = context;
-    }
-    
-    
+    } 
 }

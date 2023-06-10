@@ -37,18 +37,19 @@ public class UserTypeService : IUserTypeService
 
     public async Task<UserTypeResponse> UpdateAsync(int id, UserType userType)
     {
-        var existingUser = await _userTypeRepository.FindByIdAsync(id);
+        var existingUserType = await _userTypeRepository.FindByIdAsync(id);
 
-        if (existingUser == null)
+        if (existingUserType == null)
             return new UserTypeResponse("User not found");
 
-        existingUser.TypeOfUser = userType.TypeOfUser;
+        existingUserType.Username = userType.Username;
+        existingUserType.TypeOfUser = userType.TypeOfUser;
 
         try
         {
-            _userTypeRepository.Update(existingUser);
+            _userTypeRepository.Update(existingUserType);
             await _unitOfWork.CompleteAsync();
-            return new UserTypeResponse(existingUser);
+            return new UserTypeResponse(existingUserType);
         }
         catch (Exception e)
         {
@@ -58,16 +59,16 @@ public class UserTypeService : IUserTypeService
 
     public async Task<UserTypeResponse> DeleteAsync(int id)
     {
-        var existingUser = await _userTypeRepository.FindByIdAsync(id);
+        var existingUserType = await _userTypeRepository.FindByIdAsync(id);
 
-        if (existingUser == null)
+        if (existingUserType == null)
             return new UserTypeResponse("User not found");
         
         try
         {
-            _userTypeRepository.Remove(existingUser);
+            _userTypeRepository.Remove(existingUserType);
             await _unitOfWork.CompleteAsync();
-            return new UserTypeResponse(existingUser);
+            return new UserTypeResponse(existingUserType);
         }
         catch (Exception e)
         {

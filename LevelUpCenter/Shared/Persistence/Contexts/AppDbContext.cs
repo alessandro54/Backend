@@ -21,6 +21,7 @@ public class AppDbContext : DbContext
         builder.Entity<UserType>().ToTable("User Type");
         builder.Entity<UserType>().HasKey(p => p.Id);
         builder.Entity<UserType>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<UserType>().Property(p => p.Username).IsRequired();
         builder.Entity<UserType>().Property(p => p.TypeOfUser).IsRequired();
         //relationships
         builder.Entity<UserType>()
