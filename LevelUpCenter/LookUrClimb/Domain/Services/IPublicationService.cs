@@ -1,7 +1,7 @@
-using LevelUpCenter.Home.Domain.Models;
-using LevelUpCenter.Home.Domain.Services.Communication;
+using LevelUpCenter.LookUrClimb.Domain.Models;
+using LevelUpCenter.LookUrClimb.Domain.Services.Communication;
 
-namespace LevelUpCenter.Home.Domain.Services;
+namespace LevelUpCenter.LookUrClimb.Domain.Services;
 
 public interface IPublicationService
 {

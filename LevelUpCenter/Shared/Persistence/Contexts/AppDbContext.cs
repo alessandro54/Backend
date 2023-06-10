@@ -1,4 +1,4 @@
-using LevelUpCenter.Home.Domain.Models;
+using LevelUpCenter.LookUrClimb.Domain.Models;
 using LevelUpCenter.Shared.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,7 +6,7 @@ namespace LevelUpCenter.Shared.Persistence.Contexts;
 
 public class AppDbContext : DbContext
 {
-    public DbSet<UserType> Users { get; set; }
+    public DbSet<UserType> UserTypes { get; set; }
     public DbSet<Publication> Publications { get; set; }
     
 

@@ -1,22 +1,21 @@
-using LevelUpCenter.Home.Domain.Models;
-using LevelUpCenter.Home.Domain.Repositories;
-using LevelUpCenter.Home.Domain.Services;
-using LevelUpCenter.Home.Domain.Services.Communication;
-using LevelUpCenter.Home.Resources;
+using LevelUpCenter.LookUrClimb.Domain.Models;
+using LevelUpCenter.LookUrClimb.Domain.Repositories;
+using LevelUpCenter.LookUrClimb.Domain.Services;
+using LevelUpCenter.LookUrClimb.Domain.Services.Communication;
 
-namespace LevelUpCenter.Home.Services;
+namespace LevelUpCenter.LookUrClimb.Services;
 
 public class PublicationService : IPublicationService
 {
     private readonly IPublicationRepository _publicationRepository;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IUserRepository _userRepository;
+    private readonly IUserTypeRepository _userTypeRepository;
 
-    public PublicationService(IPublicationRepository publicationRepository, IUnitOfWork unitOfWork, IUserRepository userRepository)
+    public PublicationService(IPublicationRepository publicationRepository, IUnitOfWork unitOfWork, IUserTypeRepository userTypeRepository)
     {
         _publicationRepository = publicationRepository;
         _unitOfWork = unitOfWork;
-        _userRepository = userRepository;
+        _userTypeRepository = userTypeRepository;
     }
 
     public async Task<IEnumerable<Publication>> ListByUserIdAsync(int userId)
@@ -31,7 +30,7 @@ public class PublicationService : IPublicationService
 
     public async Task<PublicationResponse> SaveAsync(Publication publication)
     {
-        var existingUser = await _userRepository.FindByIdAsync(publication.UserId);
+        var existingUser = await _userTypeRepository.FindByIdAsync(publication.UserId);
         if (existingUser == null)
             return new PublicationResponse("Invalid User");
 
@@ -53,7 +52,7 @@ public class PublicationService : IPublicationService
         if (existingPublication == null)
             return new PublicationResponse("Publication not found.");
 
-        var existingUser = await _userRepository.FindByIdAsync(publication.UserId);
+        var existingUser = await _userTypeRepository.FindByIdAsync(publication.UserId);
         if (existingUser == null)
             return new PublicationResponse("Invalid user");
 

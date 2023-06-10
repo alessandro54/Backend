@@ -1,4 +1,4 @@
-namespace LevelUpCenter.Home.Domain.Models;
+namespace LevelUpCenter.LookUrClimb.Domain.Models;
 
 public class UserType
 {

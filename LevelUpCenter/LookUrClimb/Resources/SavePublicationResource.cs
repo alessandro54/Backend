@@ -1,4 +1,4 @@
-namespace LevelUpCenter.Home.Resources;
+namespace LevelUpCenter.LookUrClimb.Resources;
 
 public class SavePublicationResource
 {

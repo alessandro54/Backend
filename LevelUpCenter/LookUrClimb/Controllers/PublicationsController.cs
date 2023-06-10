@@ -1,12 +1,11 @@
 using AutoMapper;
-using LevelUpCenter.Home.Domain.Services;
-using LevelUpCenter.Home.Resources;
-using LevelUpCenter.Home.Domain.Models;
+using LevelUpCenter.LookUrClimb.Domain.Models;
+using LevelUpCenter.LookUrClimb.Domain.Services;
+using LevelUpCenter.LookUrClimb.Resources;
 using LevelUpCenter.Shared.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
-namespace LevelUpCenter.Home.Controllers;
+namespace LevelUpCenter.LookUrClimb.Controllers;
 
 [ApiController]
 [Route("/api/v1/[controller]")]

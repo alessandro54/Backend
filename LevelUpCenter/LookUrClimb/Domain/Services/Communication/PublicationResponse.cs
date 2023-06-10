@@ -1,7 +1,7 @@
-using LevelUpCenter.Home.Domain.Models;
+using LevelUpCenter.LookUrClimb.Domain.Models;
 using LevelUpCenter.Shared.Domain.Services.Communication;
 
-namespace LevelUpCenter.Home.Domain.Services.Communication;
+namespace LevelUpCenter.LookUrClimb.Domain.Services.Communication;
 
 public class PublicationResponse : BaseResponse<Publication>
 {

@@ -1,10 +1,10 @@
-using LevelUpCenter.Home.Domain.Models;
-using LevelUpCenter.Home.Domain.Repositories;
+using LevelUpCenter.LookUrClimb.Domain.Models;
+using LevelUpCenter.LookUrClimb.Domain.Repositories;
 using LevelUpCenter.Shared.Persistence.Contexts;
 using LevelUpCenter.Shared.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace LevelUpCenter.Home.Persistence.Repositories;
+namespace LevelUpCenter.LookUrClimb.Persistence.Repositories;
 
 public class PublicationRepository : BaseRepository, IPublicationRepository
 {

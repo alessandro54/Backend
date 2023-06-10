@@ -1,4 +1,4 @@
-namespace LevelUpCenter.Home.Domain.Repositories;
+namespace LevelUpCenter.LookUrClimb.Domain.Repositories;
 
 public interface IUnitOfWork
 {

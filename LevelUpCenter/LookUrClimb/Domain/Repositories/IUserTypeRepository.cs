@@ -1,8 +1,8 @@
-using LevelUpCenter.Home.Domain.Models;
+using LevelUpCenter.LookUrClimb.Domain.Models;
 
-namespace LevelUpCenter.Home.Domain.Repositories;
+namespace LevelUpCenter.LookUrClimb.Domain.Repositories;
 
-public interface IUserRepository
+public interface IUserTypeRepository
 {
     Task<IEnumerable<UserType>> ListAsync();
     Task<UserType> FindByIdAsync(int id);

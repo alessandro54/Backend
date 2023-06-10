@@ -1,6 +1,6 @@
-using LevelUpCenter.Home.Domain.Models;
+using LevelUpCenter.LookUrClimb.Domain.Models;
 
-namespace LevelUpCenter.Home.Domain.Repositories;
+namespace LevelUpCenter.LookUrClimb.Domain.Repositories;
 
 public interface IPublicationRepository
 {

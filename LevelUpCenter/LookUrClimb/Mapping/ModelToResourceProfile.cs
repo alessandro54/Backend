@@ -1,14 +1,14 @@
 using AutoMapper;
-using LevelUpCenter.Home.Domain.Models;
-using LevelUpCenter.Home.Resources;
+using LevelUpCenter.LookUrClimb.Domain.Models;
+using LevelUpCenter.LookUrClimb.Resources;
 
-namespace LevelUpCenter.Home.Mapping;
+namespace LevelUpCenter.LookUrClimb.Mapping;
 
 public class ModelToResourceProfile : Profile
 {
     public ModelToResourceProfile()
     {
-        CreateMap<UserType, UserResource>();
+        CreateMap<UserType, UserTypeResource>();
         CreateMap<Publication, PublicationResource>();
     }
 }

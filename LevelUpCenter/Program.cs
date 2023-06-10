@@ -1,8 +1,8 @@
-using LevelUpCenter.Home.Domain.Repositories;
-using LevelUpCenter.Home.Domain.Services;
-using LevelUpCenter.Home.Mapping;
-using LevelUpCenter.Home.Persistence.Repositories;
-using LevelUpCenter.Home.Services;
+using LevelUpCenter.LookUrClimb.Services;
+using LevelUpCenter.LookUrClimb.Domain.Repositories;
+using LevelUpCenter.LookUrClimb.Domain.Services;
+using LevelUpCenter.LookUrClimb.Mapping;
+using LevelUpCenter.LookUrClimb.Persistence.Repositories;
 using LevelUpCenter.Shared.Persistence.Contexts;
 using LevelUpCenter.Shared.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -29,9 +29,9 @@ builder.Services.AddDbContext<AppDbContext>(
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 // Dependency injection configuration
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserTypeRepository, UserTypeRepository>();
 builder.Services.AddScoped<IPublicationRepository, PublicationRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserTypeService, UserTypeService>();
 builder.Services.AddScoped<IPublicationService, PublicationService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
