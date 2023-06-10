@@ -5,7 +5,7 @@ using LevelUpCenter.LookUrClimb.Resources;
 using LevelUpCenter.Shared.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LevelUpCenter.LookUrClimb.Controllers;
+namespace LevelUpCenter.LookUrClimb.Controller;
 
 [ApiController]
 [Route("/api/v1/[controller]")]

@@ -1,4 +1,5 @@
 using LevelUpCenter.LookUrClimb.Domain.Models;
+using LevelUpCenter.Security.Domain.Models;
 using LevelUpCenter.Shared.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ public class AppDbContext : DbContext
 {
     public DbSet<UserType> UserTypes { get; set; }
     public DbSet<Publication> Publications { get; set; }
+    public DbSet<User> Users { get; set; }
     
 
     public AppDbContext(DbContextOptions options) : base(options)
@@ -33,6 +35,15 @@ public class AppDbContext : DbContext
         builder.Entity<Publication>().HasKey(p => p.Id);
         builder.Entity<Publication>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Publication>().Property(p => p.Description).IsRequired();
+        
+        // Constraints
+        builder.Entity<User>().ToTable("Users");
+        builder.Entity<User>().HasKey(p => p.Id);
+        builder.Entity<User>().Property(p => 
+            p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<User>().Property(p => 
+            p.Username).IsRequired().HasMaxLength(30);
+        builder.Entity<User>().Property(p => p.FirstName).IsRequired();
         
         //aply snake case naming convention
         builder.UseSnakeCaseNamingConvention();
