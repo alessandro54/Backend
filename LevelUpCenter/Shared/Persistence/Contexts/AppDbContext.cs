@@ -10,6 +10,7 @@ public class AppDbContext : DbContext
     public DbSet<UserType> UserTypes { get; set; }
     public DbSet<Publication> Publications { get; set; }
     public DbSet<UserCoach> UserCoaches { get; set; }
+    public DbSet<Game> Games { get; set; }
 
     public DbSet<User> Users { get; set; }
     
@@ -65,6 +66,19 @@ public class AppDbContext : DbContext
             p.Username).IsRequired().HasMaxLength(30);
         builder.Entity<User>().Property(p => p.FirstName).IsRequired();
 
+
+       // Oj 
+        builder.Entity<UserType>()
+            .HasMany(p => p.Games)
+            .WithOne(p => p.UserType)
+            .HasForeignKey(p => p.UserId);
+
+        builder.Entity<Game>().ToTable("Games");
+        builder.Entity<Game>().HasKey(p => p.Id);
+        builder.Entity<Game>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Game>().Property(p => p.name).IsRequired();
+        builder.Entity<Game>().Property(p => p.description).IsRequired();
+        //oj
         
         //aply snake case naming convention
         builder.UseSnakeCaseNamingConvention();

@@ -7,10 +7,12 @@ D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\LevelUpCenter.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\LevelUpCenter.pdb
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\AutoMapper.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\BCrypt.Net-Next.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Google.Protobuf.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\K4os.Compression.LZ4.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\K4os.Compression.LZ4.Streams.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\K4os.Hash.xxHash.dll
+D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
@@ -23,16 +25,23 @@ D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Extensions.
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
+D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.OpenApi.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\MySql.Data.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\MySql.EntityFrameworkCore.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\BouncyCastle.Crypto.dll
+D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Swashbuckle.AspNetCore.Annotations.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\System.Configuration.ConfigurationManager.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\System.Drawing.Common.dll
+D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\System.Security.Permissions.dll
 D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\System.Windows.Extensions.dll
@@ -67,86 +76,3 @@ D:\aplicaciones web\Backend\LevelUpCenter\obj\Debug\net7.0\refint\LevelUpCenter.
 D:\aplicaciones web\Backend\LevelUpCenter\obj\Debug\net7.0\LevelUpCenter.pdb
 D:\aplicaciones web\Backend\LevelUpCenter\obj\Debug\net7.0\LevelUpCenter.genruntimeconfig.cache
 D:\aplicaciones web\Backend\LevelUpCenter\obj\Debug\net7.0\ref\LevelUpCenter.dll
-<<<<<<< HEAD
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\appsettings.Development.json
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\appsettings.json
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\LevelUpCenter.exe
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\LevelUpCenter.deps.json
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\LevelUpCenter.runtimeconfig.json
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\LevelUpCenter.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\LevelUpCenter.pdb
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\AutoMapper.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Google.Protobuf.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\K4os.Compression.LZ4.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\K4os.Compression.LZ4.Streams.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\K4os.Hash.xxHash.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Extensions.Caching.Abstractions.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Extensions.Caching.Memory.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Extensions.Logging.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.OpenApi.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\MySql.Data.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\MySql.EntityFrameworkCore.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\BouncyCastle.Crypto.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\System.Configuration.ConfigurationManager.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\System.Drawing.Common.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\System.Security.Permissions.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\System.Windows.Extensions.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\runtimes\win-x64\native\comerr64.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\runtimes\win-x64\native\gssapi64.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\runtimes\win-x64\native\k5sprt64.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\runtimes\win-x64\native\krb5_64.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\runtimes\win-x64\native\krbcc64.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\LevelUpCenter.csproj.AssemblyReference.cache
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\LevelUpCenter.GeneratedMSBuildEditorConfig.editorconfig
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\LevelUpCenter.AssemblyInfoInputs.cache
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\LevelUpCenter.AssemblyInfo.cs
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\LevelUpCenter.csproj.CoreCompileInputs.cache
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\LevelUpCenter.MvcApplicationPartsAssemblyInfo.cs
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\LevelUpCenter.MvcApplicationPartsAssemblyInfo.cache
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\staticwebassets\msbuild.LevelUpCenter.Microsoft.AspNetCore.StaticWebAssets.props
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\staticwebassets\msbuild.build.LevelUpCenter.props
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.LevelUpCenter.props
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.LevelUpCenter.props
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\staticwebassets.pack.json
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\staticwebassets.build.json
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\staticwebassets.development.json
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\scopedcss\bundle\LevelUpCenter.styles.css
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\LevelUpCenter.csproj.CopyComplete
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\LevelUpCenter.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\refint\LevelUpCenter.dll
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\LevelUpCenter.pdb
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\LevelUpCenter.genruntimeconfig.cache
-D:\apliWeb\nuevoBackend\Backend\LevelUpCenter\obj\Debug\net7.0\ref\LevelUpCenter.dll
-=======
-D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\BCrypt.Net-Next.dll
-D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
-D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
-D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
-D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\Swashbuckle.AspNetCore.Annotations.dll
-D:\aplicaciones web\Backend\LevelUpCenter\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
->>>>>>> login
