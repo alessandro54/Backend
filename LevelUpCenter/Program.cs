@@ -18,8 +18,8 @@ using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -42,14 +42,32 @@ builder.Services.AddSwaggerGen(options =>
             Url = new Uri("https://lookurclimb.com/license")
         }
     });
+    options.EnableAnnotations();
+    options.AddSecurityDefinition("bearerAuth", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        Description = "JWT Authorization header using the Bearer scheme."
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "bearerAuth"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
 });
 
 // Add CORS
 builder.Services.AddCors();
-
-// AppSettings Configuration
-builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
-
 
 // Add database connection
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -58,11 +76,15 @@ builder.Services.AddDbContext<AppDbContext>(
     options => options.UseMySQL(connectionString)
         .LogTo(Console.WriteLine, LogLevel.Information)
         .EnableSensitiveDataLogging()
-        .EnableDetailedErrors());
+        .EnableDetailedErrors()
+    );
 
 // Add lowercase routes
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+// AppSettings Configuration
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
 // Dependency injection configuration
 builder.Services.AddScoped<IUserTypeRepository, UserTypeRepository>();
@@ -78,13 +100,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 // AutoMapper Configuration
 builder.Services.AddAutoMapper(
- 
     typeof(LevelUpCenter.LookUrClimb.Mapping.ModelToResourceProfile),
- 
     typeof(LevelUpCenter.Security.Mapping.ModelToResourceProfile),
- 
     typeof(LevelUpCenter.LookUrClimb.Mapping.ResourceToModelProfile),
- 
     typeof(LevelUpCenter.Security.Mapping.ResourceToModelProfile)
     );
 
@@ -101,7 +119,11 @@ using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("v1/swagger.json", "v1");
+        options.RoutePrefix = "swagger";
+    });
 }
 
 // Configure CORS 

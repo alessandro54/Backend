@@ -1,16 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\LookUrClimb",
     "\\LookUrClimb\\Services",
-    "\\Properties",
-    "\\Shared",
+    "\\Security",
     "\\Shared\\Domain",
     "\\Shared\\Domain\\Services",
     "\\Shared\\Domain\\Services\\Communication",
     "\\Shared\\Persistence",
     "\\Shared\\Persistence\\Repositories"
   ],
-  "SelectedNode": "\\Properties\\launchSettings.json",
+  "SelectedNode": "\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
