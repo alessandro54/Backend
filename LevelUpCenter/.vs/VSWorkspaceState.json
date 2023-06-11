@@ -1,16 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\LookUrClimb",
-    "\\LookUrClimb\\Services",
-    "\\Properties",
-    "\\Shared",
-    "\\Shared\\Domain",
-    "\\Shared\\Domain\\Services",
-    "\\Shared\\Domain\\Services\\Communication",
-    "\\Shared\\Persistence",
-    "\\Shared\\Persistence\\Repositories"
+    "\\Security",
+    "\\Security\\Authorization",
+    "\\Security\\Authorization\\Handlers",
+    "\\Security\\Authorization\\Handlers\\Interfaces"
   ],
-  "SelectedNode": "\\Properties\\launchSettings.json",
+  "SelectedNode": "\\Security\\Authorization\\Handlers\\Interfaces\\IJwtHandler.cs",
   "PreviewInSolutionExplorer": false
 }
