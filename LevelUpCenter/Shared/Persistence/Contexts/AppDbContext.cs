@@ -8,7 +8,7 @@ public class AppDbContext : DbContext
 {
     public DbSet<UserType> UserTypes { get; set; }
     public DbSet<Publication> Publications { get; set; }
-    
+    public DbSet<UserCoach> UserCoaches { get; set; }
 
     public AppDbContext(DbContextOptions options) : base(options)
     {
@@ -33,6 +33,23 @@ public class AppDbContext : DbContext
         builder.Entity<Publication>().HasKey(p => p.Id);
         builder.Entity<Publication>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Publication>().Property(p => p.Description).IsRequired();
+        
+        builder.Entity<UserCoach>().ToTable("User Coach");
+        //builder.Entity<UserCoach>().HasKey(p => p.Id);
+        //builder.Entity<UserCoach>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<UserCoach>().Property(p => p.Username).IsRequired();
+        builder.Entity<UserCoach>().Property(p => p.TypeOfUser);
+        builder.Entity<UserCoach>().Property(p => p.Name);
+        builder.Entity<UserCoach>().Property(p => p.Last_name);
+        builder.Entity<UserCoach>().Property(p => p.Country).IsRequired();
+        builder.Entity<UserCoach>().Property(p => p.Age).IsRequired();
+        builder.Entity<UserCoach>().Property(p => p.Description);
+        builder.Entity<UserCoach>().Property(p => p.Image);
+        builder.Entity<UserCoach>().Property(p => p.Category).IsRequired();
+        builder.Entity<UserCoach>().Property(p => p.Price).IsRequired();
+        builder.Entity<UserCoach>().Property(p => p.Video);
+        builder.Entity<UserCoach>().Property(p => p.Rating);
+        builder.Entity<UserCoach>().Property(p => p.InventoryStatus);
         
         //aply snake case naming convention
         builder.UseSnakeCaseNamingConvention();
