@@ -40,6 +40,7 @@ public class JwtHandler : IJwtHandler
         Console.WriteLine($"token: {token.Id}, {token.Issuer}, {token.SecurityKey?.ToString()}");
         return tokenHandler.WriteToken(token);
     }
+
     public int? ValidateToken(string token)
     {
         if (token == null)
