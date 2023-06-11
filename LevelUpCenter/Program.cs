@@ -135,6 +135,7 @@ app.UseCors(x => x
 
 // Configure Error Handler Middleware
 app.UseMiddleware<ErrorHandlerMiddleware>();
+
 // Configure JWT Handling
 app.UseMiddleware<JwtMiddleware>();
 

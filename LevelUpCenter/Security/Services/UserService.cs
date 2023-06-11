@@ -18,10 +18,11 @@ public class UserService : IUserService
     private readonly IJwtHandler _jwtHandler;
     private readonly IMapper _mapper;
 
-    public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, IMapper mapper)
+    public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, IJwtHandler jwtHandler, IMapper mapper)
     {
         _userRepository = userRepository;
         _unitOfWork = unitOfWork;
+        _jwtHandler = jwtHandler;
         _mapper = mapper;
     }
 
@@ -32,14 +33,14 @@ public class UserService : IUserService
         Console.WriteLine($"User: {user.Id}, {user.FirstName}, {user.LastName}, {user.Username}, {user.PasswordHash}");
  
         // validate
-        if (user == null || !BCryptNet.Verify(request.Password, 
-                user.PasswordHash))
+        if (user == null || !BCryptNet.Verify(request.Password, user.PasswordHash))
         {
             Console.WriteLine("Authentication Error");
             throw new AppException("Username or password is incorrect");
         }
  
         Console.WriteLine("Authentication successful. About to generate token");
+        
         // authentication successful
         var response = _mapper.Map<AuthenticateResponse>(user);
         Console.WriteLine($"Response: {response.Id}, {response.FirstName}, {response.LastName}, {response.Username}");

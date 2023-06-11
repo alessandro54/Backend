@@ -1,6 +1,7 @@
 using LevelUpCenter.Security.Authorization.Handlers.Interfaces;
 using LevelUpCenter.Security.Authorization.Settings;
 using LevelUpCenter.Security.Domain.Services;
+using Microsoft.Extensions.Options;
 
 namespace LevelUpCenter.Security.Authorization.Middleware;
 
@@ -9,10 +10,10 @@ public class JwtMiddleware
     private readonly RequestDelegate _next;
     private readonly AppSettings _appSettings;
 
-    public JwtMiddleware(RequestDelegate next, AppSettings appSettings)
+    public JwtMiddleware(RequestDelegate next, IOptions<AppSettings> appSettings)
     {
         _next = next;
-        _appSettings = appSettings;
+        _appSettings = appSettings.Value;
     }
     
     public async Task Invoke(HttpContext context, IUserService userService, IJwtHandler handler)
@@ -22,8 +23,7 @@ public class JwtMiddleware
         if (userId != null)
         {
             // attach user to context on successful jwt validation
-            context.Items["User"] = await 
-                userService.GetByIdAsync(userId.Value);
+            context.Items["User"] = await userService.GetByIdAsync(userId.Value);
         }
         await _next(context);
     }

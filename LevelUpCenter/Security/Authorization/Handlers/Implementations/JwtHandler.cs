@@ -25,6 +25,7 @@ public class JwtHandler : IJwtHandler
         Console.WriteLine($"token handler: {tokenHandler.TokenType}");
         var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
         Console.WriteLine($"Secret Key: {key}");
+        
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new[]
@@ -32,10 +33,9 @@ public class JwtHandler : IJwtHandler
                 new Claim("id", user.Id.ToString())
             }),
             Expires = DateTime.UtcNow.AddDays(7),
-            SigningCredentials = new SigningCredentials(
-                new SymmetricSecurityKey(key),
-                SecurityAlgorithms.HmacSha256Signature)
+            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
+        
         var token = tokenHandler.CreateToken(tokenDescriptor);
         Console.WriteLine($"token: {token.Id}, {token.Issuer}, {token.SecurityKey?.ToString()}");
         return tokenHandler.WriteToken(token);
@@ -43,15 +43,14 @@ public class JwtHandler : IJwtHandler
 
     public int? ValidateToken(string token)
     {
-        if (token == null)
+        if (string.IsNullOrEmpty(token))
             return null;
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
         // Execute Token validation
         try
         {
-            tokenHandler.ValidateToken(token, new 
-                TokenValidationParameters
+            tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
@@ -61,8 +60,7 @@ public class JwtHandler : IJwtHandler
                     ClockSkew = TimeSpan.Zero
                 }, out SecurityToken validatedToken);
             var jwtToken = (JwtSecurityToken)validatedToken;
-            var userId = int.Parse(jwtToken.Claims.First(
-                claim => claim.Type == "id").Value);
+            var userId = int.Parse(jwtToken.Claims.First(claim => claim.Type == "id").Value);
             return userId;
         }
         catch (Exception e)
