@@ -9,12 +9,11 @@ public class AppDbContext : DbContext
 {
     public DbSet<UserType> UserTypes { get; set; }
     public DbSet<Publication> Publications { get; set; }
-<<<<<<< HEAD
     public DbSet<UserCoach> UserCoaches { get; set; }
-=======
+
     public DbSet<User> Users { get; set; }
     
->>>>>>> login
+
 
     public AppDbContext(DbContextOptions options) : base(options)
     {
@@ -40,7 +39,6 @@ public class AppDbContext : DbContext
         builder.Entity<Publication>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Publication>().Property(p => p.Description).IsRequired();
         
-<<<<<<< HEAD
         builder.Entity<UserCoach>().ToTable("User Coach");
         //builder.Entity<UserCoach>().HasKey(p => p.Id);
         //builder.Entity<UserCoach>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
@@ -57,7 +55,7 @@ public class AppDbContext : DbContext
         builder.Entity<UserCoach>().Property(p => p.Video);
         builder.Entity<UserCoach>().Property(p => p.Rating);
         builder.Entity<UserCoach>().Property(p => p.InventoryStatus);
-=======
+        
         // Constraints
         builder.Entity<User>().ToTable("Users");
         builder.Entity<User>().HasKey(p => p.Id);
@@ -66,7 +64,7 @@ public class AppDbContext : DbContext
         builder.Entity<User>().Property(p => 
             p.Username).IsRequired().HasMaxLength(30);
         builder.Entity<User>().Property(p => p.FirstName).IsRequired();
->>>>>>> login
+
         
         //aply snake case naming convention
         builder.UseSnakeCaseNamingConvention();
