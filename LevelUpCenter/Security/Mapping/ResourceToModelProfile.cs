@@ -1,10 +1,10 @@
-using AutoMapper;
+﻿using AutoMapper;
 using LevelUpCenter.Security.Domain.Models;
-using LevelUpCenter.Security.Services.Communication;
+using LevelUpCenter.Security.Domain.Services.Communication;
 
 namespace LevelUpCenter.Security.Mapping;
 
-public class ResourceToModelProfile : Profile
+public class ResourceToModelProfile: Profile
 {
     public ResourceToModelProfile()
     {

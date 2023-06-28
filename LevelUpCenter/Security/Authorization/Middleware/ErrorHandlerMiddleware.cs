@@ -1,4 +1,4 @@
-using System.Net;
+﻿using System.Net;
 using System.Text.Json;
 using LevelUpCenter.Security.Exceptions;
 
@@ -23,6 +23,7 @@ public class ErrorHandlerMiddleware
         {
             var response = context.Response;
             response.ContentType = "application/json";
+
             switch(error)
             {
                 case AppException e:
@@ -35,15 +36,11 @@ public class ErrorHandlerMiddleware
                     break;
                 default:
                     // unhandled error
-                    response.StatusCode = 
-                        (int)HttpStatusCode.InternalServerError;
+                    response.StatusCode = (int)HttpStatusCode.InternalServerError;
                     break;
             }
-            
-            var result = JsonSerializer.Serialize(new
-            {
-                message = error?.Message
-            });
+
+            var result = JsonSerializer.Serialize(new { message = error?.Message });
             await response.WriteAsync(result);
         }
     }

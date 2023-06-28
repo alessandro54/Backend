@@ -1,4 +1,4 @@
-namespace LevelUpCenter.Security.Services.Communication;
+﻿namespace LevelUpCenter.Security.Domain.Services.Communication;
 
 public class UpdateRequest
 {

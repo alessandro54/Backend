@@ -1,4 +1,4 @@
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using LevelUpCenter.Security.Authorization.Handlers.Interfaces;
@@ -9,10 +9,10 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace LevelUpCenter.Security.Authorization.Handlers.Implementations;
 
-public class JwtHandler : IJwtHandler
+public class JwtHandler: IJwtHandler
 {
     private readonly AppSettings _appSettings;
-
+    
     public JwtHandler(IOptions<AppSettings> appSettings)
     {
         _appSettings = appSettings.Value;
@@ -43,24 +43,28 @@ public class JwtHandler : IJwtHandler
 
     public int? ValidateToken(string token)
     {
-        if (string.IsNullOrEmpty(token))
+        if (token == null)
             return null;
+
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+
         // Execute Token validation
         try
         {
             tokenHandler.ValidateToken(token, new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    // Expiration with no delay
-                    ClockSkew = TimeSpan.Zero
-                }, out SecurityToken validatedToken);
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                // Expiration with no delay
+                ClockSkew = TimeSpan.Zero
+            }, out SecurityToken validatedToken);
+
             var jwtToken = (JwtSecurityToken)validatedToken;
             var userId = int.Parse(jwtToken.Claims.First(claim => claim.Type == "id").Value);
+
             return userId;
         }
         catch (Exception e)

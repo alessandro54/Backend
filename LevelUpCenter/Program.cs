@@ -17,6 +17,9 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add CORS
+builder.Services.AddCors();
+
 // Add services to the container.
 builder.Services.AddControllers();
 
@@ -66,9 +69,6 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// Add CORS
-builder.Services.AddCors();
-
 // Add database connection
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -81,6 +81,8 @@ builder.Services.AddDbContext<AppDbContext>(
 
 // Add lowercase routes
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
+
+// Shared Injection Configuration
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // AppSettings Configuration

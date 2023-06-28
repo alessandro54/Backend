@@ -1,4 +1,4 @@
-namespace LevelUpCenter.Security.Authorization.Attributes;
+﻿namespace LevelUpCenter.Security.Authorization.Attributes;
 
 [AttributeUsage(AttributeTargets.Method)]
 public class AllowAnonymousAttribute : Attribute

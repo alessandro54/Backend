@@ -1,4 +1,4 @@
-using LevelUpCenter.Security.Domain.Models;
+﻿using LevelUpCenter.Security.Domain.Models;
 
 namespace LevelUpCenter.Security.Authorization.Handlers.Interfaces;
 

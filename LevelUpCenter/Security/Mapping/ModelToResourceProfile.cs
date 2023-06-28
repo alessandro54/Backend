@@ -1,7 +1,7 @@
-using AutoMapper;
+﻿using AutoMapper;
 using LevelUpCenter.Security.Domain.Models;
+using LevelUpCenter.Security.Domain.Services.Communication;
 using LevelUpCenter.Security.Resources;
-using LevelUpCenter.Security.Services.Communication;
 
 namespace LevelUpCenter.Security.Mapping;
 

@@ -1,9 +1,10 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace LevelUpCenter.Security.Services.Communication;
+namespace LevelUpCenter.Security.Domain.Services.Communication;
 
 public class AuthenticateRequest
 {
     [Required] public string Username { get; set; }
+
     [Required] public string Password { get; set; }
 }

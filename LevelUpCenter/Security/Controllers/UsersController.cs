@@ -1,18 +1,18 @@
-using AutoMapper;
+﻿using AutoMapper;
+using LevelUpCenter.Security.Authorization.Attributes;
 using LevelUpCenter.Security.Domain.Models;
 using LevelUpCenter.Security.Domain.Services;
+using LevelUpCenter.Security.Domain.Services.Communication;
 using LevelUpCenter.Security.Resources;
-using LevelUpCenter.Security.Services.Communication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LevelUpCenter.Security.Controllers;
 
 [Authorize]
-    [ApiController]
-    [Route("/api/v1/[controller]")]
-public class UsersController :ControllerBase
-{
+[ApiController]
+[Route("/api/v1/[controller]")]
+public class UsersController: ControllerBase
+{   
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
 
@@ -38,16 +38,15 @@ public class UsersController :ControllerBase
         await _userService.RegisterAsync(request);
         return Ok(new { message = "Registration successful" });
     }
-
+    
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         var users = await _userService.ListAsync();
-        var resources = _mapper.Map<IEnumerable<User>, 
-            IEnumerable<UserResource>>(users);
+        var resources = _mapper.Map<IEnumerable<User>, IEnumerable<UserResource>>(users);
         return Ok(resources);
     }
-
+    
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
@@ -55,7 +54,7 @@ public class UsersController :ControllerBase
         var resource = _mapper.Map<User, UserResource>(user);
         return Ok(resource);
     }
-
+    
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, UpdateRequest request)
     {
@@ -69,4 +68,5 @@ public class UsersController :ControllerBase
         await _userService.DeleteAsync(id);
         return Ok(new { message = "User deleted successfully" });
     }
+    
 }

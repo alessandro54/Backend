@@ -1,5 +1,5 @@
-using LevelUpCenter.Security.Domain.Models;
-using LevelUpCenter.Security.Services.Communication;
+﻿using LevelUpCenter.Security.Domain.Models;
+using LevelUpCenter.Security.Domain.Services.Communication;
 
 namespace LevelUpCenter.Security.Domain.Services;
 

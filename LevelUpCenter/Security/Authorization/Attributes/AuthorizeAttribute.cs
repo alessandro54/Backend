@@ -1,10 +1,10 @@
-using LevelUpCenter.Security.Domain.Models;
+﻿using LevelUpCenter.Security.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace LevelUpCenter.Security.Authorization.Attributes;
 
-[AttributeUsage(AttributeTargets.Method | AttributeTargets.Method)]
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public class AuthorizeAttribute : Attribute, IAuthorizationFilter
 {
     public void OnAuthorization(AuthorizationFilterContext context)

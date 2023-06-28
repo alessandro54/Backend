@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace LevelUpCenter.Security.Domain.Models;
 
@@ -9,5 +9,6 @@ public class User
     public string LastName { get; set; }
     public string Username { get; set; }
 
-    [JsonIgnore] public string PasswordHash { get; set; }
+    [JsonIgnore]
+    public string PasswordHash { get; set; }
 }
