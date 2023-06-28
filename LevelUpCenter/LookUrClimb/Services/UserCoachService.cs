@@ -18,13 +18,21 @@ public class UserCoachService : IUserCoachService
         _userTypeRepository = userTypeRepository;
     }
 
-    async Task<IEnumerable<UserCoach>> IUserCoachService.ListAsync()
+    public async Task<IEnumerable<UserCoach>> ListByUserIdAsync(int userId)
+    {
+        return await _userCoachRepository.FindByUserIdAsync(userId);
+    }
+    
+    public async Task<IEnumerable<UserCoach>> ListAsync()
     {
         return await _userCoachRepository.ListAsync();
     }
 
     public async Task<UserCoachResponse> SaveAsync(UserCoach userCoach)
     {
+        var existingUser = await _userTypeRepository.FindByIdAsync(userCoach.UserId);
+        if (existingUser == null)
+            return new UserCoachResponse("Invalid User");
         try
         {
             await _userCoachRepository.AddAsync(userCoach);
@@ -40,12 +48,13 @@ public class UserCoachService : IUserCoachService
     public async Task<UserCoachResponse> UpdateAsync(int id, UserCoach userCoach)
     {
         var existingUserCoach = await _userCoachRepository.FindByIdAsync(id);
-
         if (existingUserCoach == null)
             return new UserCoachResponse("User not found");
-
-        existingUserCoach.Username = userCoach.Username;
-        existingUserCoach.TypeOfUser = userCoach.TypeOfUser;
+        
+        var existingUser = await _userTypeRepository.FindByIdAsync(userCoach.UserId);
+        if (existingUser == null)
+            return new UserCoachResponse("Invalid user");
+        
         existingUserCoach.Name = userCoach.Name;
         existingUserCoach.Last_name = userCoach.Last_name;
         existingUserCoach.Age = userCoach.Age;
@@ -69,83 +78,26 @@ public class UserCoachService : IUserCoachService
             return new UserCoachResponse($"An error occurred while updating the user coach: {e.Message}");
         }
     }
-
-    async Task<IEnumerable<UserType>> IUserTypeService.ListAsync()
-    {
-        return await _userTypeRepository.ListAsync();
-    }
-
-    public async Task<UserTypeResponse> SaveAsync(UserType userType)
-    {
-        try
-        {
-            await _userTypeRepository.AddAsync(userType);
-            await _unitOfWork.CompleteAsync();
-            return new UserTypeResponse(userType);
-        }
-        catch (Exception e)
-        {
-            return new UserTypeResponse($"An error occurred while saving the user: {e.Message}");
-        }
-    }
-
-    public async Task<UserTypeResponse> UpdateAsync(int id, UserType userType)
-    {
-        var existingUserType = await _userTypeRepository.FindByIdAsync(id);
-
-        if (existingUserType == null)
-            return new UserTypeResponse("User not found");
-
-        existingUserType.Username = userType.Username;
-        existingUserType.TypeOfUser = userType.TypeOfUser;
-
-        try
-        {
-            _userTypeRepository.Update(existingUserType);
-            await _unitOfWork.CompleteAsync();
-            return new UserTypeResponse(existingUserType);
-        }
-        catch (Exception e)
-        {
-            return new UserTypeResponse($"An error occurred while updating the user: {e.Message}");
-        }
-    }
-
-    async Task<UserTypeResponse> IUserTypeService.DeleteAsync(int id)
-    {
-        var existingUserType = await _userTypeRepository.FindByIdAsync(id);
-
-        if (existingUserType == null)
-            return new UserTypeResponse("User not found");
-        
-        try
-        {
-            _userTypeRepository.Remove(existingUserType);
-            await _unitOfWork.CompleteAsync();
-            return new UserTypeResponse(existingUserType);
-        }
-        catch (Exception e)
-        {
-            return new UserTypeResponse($"An error occurred while deleting the user: {e.Message}");
-        }
-    }
+    
 
     public async Task<UserCoachResponse> DeleteAsync(int id)
     {
-        var existingUserCoach = await _userCoachRepository.FindByIdAsync(id);
+        var existingUserType = await _userCoachRepository.FindByIdAsync(id);
 
-        if (existingUserCoach == null)
+        if (existingUserType == null)
             return new UserCoachResponse("User not found");
         
         try
         {
-            _userCoachRepository.Remove(existingUserCoach);
+            _userCoachRepository.Remove(existingUserType);
             await _unitOfWork.CompleteAsync();
-            return new UserCoachResponse(existingUserCoach);
+            return new UserCoachResponse(existingUserType);
         }
         catch (Exception e)
         {
-            return new UserCoachResponse($"An error occurred while deleting the user coach: {e.Message}");
+            return new UserCoachResponse($"An error occurred while deleting the user: {e.Message}");
         }
     }
+
+
 }

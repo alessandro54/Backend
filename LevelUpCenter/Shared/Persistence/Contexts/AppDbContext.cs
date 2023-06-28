@@ -41,10 +41,13 @@ public class AppDbContext : DbContext
         builder.Entity<Publication>().Property(p => p.Description).IsRequired();
         
         builder.Entity<UserCoach>().ToTable("User Coach");
-        //builder.Entity<UserCoach>().HasKey(p => p.Id);
-        //builder.Entity<UserCoach>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<UserCoach>().Property(p => p.Username).IsRequired();
-        builder.Entity<UserCoach>().Property(p => p.TypeOfUser);
+        builder.Entity<UserCoach>().HasKey(p => p.Id);
+        builder.Entity<UserCoach>().Property(p => p.Id).IsRequired();
+        builder.Entity<UserType>()
+            .HasMany(p => p.UserCoaches)
+            .WithOne(p => p.UserType)
+            .HasForeignKey(p => p.UserId);
+        
         builder.Entity<UserCoach>().Property(p => p.Name);
         builder.Entity<UserCoach>().Property(p => p.Last_name);
         builder.Entity<UserCoach>().Property(p => p.Country).IsRequired();

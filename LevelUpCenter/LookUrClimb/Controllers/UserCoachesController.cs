@@ -42,7 +42,7 @@ public class UserCoachesController : ControllerBase
     }
     
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutAsync(int id, [FromBody] SaveUserCoachResource coachResource)
+    public async Task<IActionResult> UpdateAsync(int id, [FromBody] SaveUserCoachResource coachResource)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());

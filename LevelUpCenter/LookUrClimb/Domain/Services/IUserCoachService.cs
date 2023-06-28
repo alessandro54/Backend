@@ -3,10 +3,10 @@ using LevelUpCenter.LookUrClimb.Domain.Services.Communication;
 
 namespace LevelUpCenter.LookUrClimb.Domain.Services;
 
-public interface IUserCoachService : IUserTypeService
+public interface IUserCoachService
 {
-    new Task<IEnumerable<UserCoach>> ListAsync();
+    Task<IEnumerable<UserCoach>> ListAsync();
     Task<UserCoachResponse> SaveAsync(UserCoach userCoach);
     Task<UserCoachResponse> UpdateAsync(int id, UserCoach userCoach);
-    new Task<UserCoachResponse> DeleteAsync(int id);
+    Task<UserCoachResponse> DeleteAsync(int id);
 }

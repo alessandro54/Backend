@@ -9,4 +9,5 @@ public class UserType
     //relationships
     public IList<Publication> Publications = new List<Publication>();
     public IList<Game> Games = new List<Game>();
+    public IList<UserCoach> UserCoaches = new List<UserCoach>();
 }

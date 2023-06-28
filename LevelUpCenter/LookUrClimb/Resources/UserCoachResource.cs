@@ -1,7 +1,8 @@
 namespace LevelUpCenter.LookUrClimb.Resources;
 
-public class UserCoachResource : UserTypeResource
+public class UserCoachResource
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Last_name { get; set; }
     public string Description { get; set; }
@@ -14,4 +15,5 @@ public class UserCoachResource : UserTypeResource
     public int Age { get; set; }
     public string Languaje { get; set; }
     public string Country { get; set; }
+    public UserTypeResource UserType { get; set; }
 }

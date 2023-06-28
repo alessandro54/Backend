@@ -2,8 +2,9 @@ using System.Security.Permissions;
 
 namespace LevelUpCenter.LookUrClimb.Domain.Models;
 
-public class UserCoach : UserType
+public class UserCoach
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Last_name { get; set; }
     
@@ -18,4 +19,7 @@ public class UserCoach : UserType
     public string Languaje { get; set; }
     public string Country { get; set; }
 
+    //realtionships
+    public int UserId { get; set; }
+    public UserType UserType { get; set; }
 }

@@ -14,12 +14,22 @@ public class UserCoachRepository : BaseRepository, IUserCoachRepository
 
     public async Task<IEnumerable<UserCoach>> ListAsync()
     {
-        return await _context.UserCoaches.ToListAsync();
+        return await _context.UserCoaches.Include(p => p.UserType).ToListAsync();
     }
 
     public async Task<UserCoach> FindByIdAsync(int id)
     {
-        return await _context.UserCoaches.FindAsync(id);
+        return await _context.UserCoaches
+            .Include(p => p.UserType)
+            .FirstOrDefaultAsync(p => p.Id == id);
+    }
+    
+    public async Task<IEnumerable<UserCoach>> FindByUserIdAsync(int userId)
+    {
+        return await _context.UserCoaches
+            .Where(p => p.UserId == userId)
+            .Include(p => p.UserType)
+            .ToListAsync();
     }
 
     public async Task AddAsync(UserCoach userCoach)
