@@ -3327,11 +3327,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\aplicaciones web\\Backend\\LevelUpCenter\\LevelUpCenter.csproj",
+      "projectUniqueName": "D:\\aplicaciones web\\Backend-6\\Backend\\LevelUpCenter\\LevelUpCenter.csproj",
       "projectName": "LevelUpCenter",
-      "projectPath": "D:\\aplicaciones web\\Backend\\LevelUpCenter\\LevelUpCenter.csproj",
+      "projectPath": "D:\\aplicaciones web\\Backend-6\\Backend\\LevelUpCenter\\LevelUpCenter.csproj",
       "packagesPath": "C:\\Users\\51958\\.nuget\\packages\\",
-      "outputPath": "D:\\aplicaciones web\\Backend\\LevelUpCenter\\obj\\",
+      "outputPath": "D:\\aplicaciones web\\Backend-6\\Backend\\LevelUpCenter\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\51958\\AppData\\Roaming\\NuGet\\NuGet.Config"

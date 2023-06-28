@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "twMZzLg1V5p6oTJ3452aWbzZEiYDyADg6KEBAH6ORIs5gmATUv/cxGEoqAU9iVJX6qS/ev+Pd7Fx5wbIqxMGhA==",
+  "dgSpecHash": "JKXHeYxP3o9rfVC2VtYNjnQxHw9KiStT1TSYe8baey9LzKCgM07nyrTrN8BKiePciJdri203SVINfyklc4Ndzg==",
   "success": true,
-  "projectFilePath": "D:\\aplicaciones web\\Backend\\LevelUpCenter\\LevelUpCenter.csproj",
+  "projectFilePath": "D:\\aplicaciones web\\Backend-6\\Backend\\LevelUpCenter\\LevelUpCenter.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\51958\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\51958\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
