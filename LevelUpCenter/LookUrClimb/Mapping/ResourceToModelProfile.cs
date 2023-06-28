@@ -11,5 +11,6 @@ public class ResourceToModelProfile : Profile
         CreateMap<SaveUserTypeResource, UserType>();
         CreateMap<SavePublicationResource, Publication>();
         CreateMap<SaveUserCoachResource, UserCoach>();
+        CreateMap<SaveGameResource, Game>();
     }
 }
