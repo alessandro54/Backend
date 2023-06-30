@@ -3,4 +3,7 @@
   &lt;Assembly Path="C:\Users\elkan\.nuget\packages\mysql.data\8.0.33\lib\net7.0\MySql.Data.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Users\elkan\.nuget\packages\mysql.entityframeworkcore\7.0.2\lib\net7.0\MySql.EntityFrameworkCore.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Users\elkan\RiderProjects\LevelUpCenter\LevelUpCenter\bin\Debug\net7.0\MySql.EntityFrameworkCore.dll" /&gt;&#xD;
-&lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
+&lt;/AssemblyExplorer&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bf292059_002Dcddc_002D4d2f_002Db72c_002D66160d930432/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Solution /&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

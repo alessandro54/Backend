@@ -1,31 +1,38 @@
 {
   "format": 1,
   "restore": {
-    "D:\\aplicaciones web\\Backend-6\\Backend\\LevelUpCenter\\LevelUpCenter.csproj": {}
+    "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter\\LevelUpCenter.csproj": {}
   },
   "projects": {
-    "D:\\aplicaciones web\\Backend-6\\Backend\\LevelUpCenter\\LevelUpCenter.csproj": {
+    "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter\\LevelUpCenter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\aplicaciones web\\Backend-6\\Backend\\LevelUpCenter\\LevelUpCenter.csproj",
+        "projectUniqueName": "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter\\LevelUpCenter.csproj",
         "projectName": "LevelUpCenter",
-        "projectPath": "D:\\aplicaciones web\\Backend-6\\Backend\\LevelUpCenter\\LevelUpCenter.csproj",
-        "packagesPath": "C:\\Users\\51958\\.nuget\\packages\\",
-        "outputPath": "D:\\aplicaciones web\\Backend-6\\Backend\\LevelUpCenter\\obj\\",
+        "projectPath": "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter\\LevelUpCenter.csproj",
+        "packagesPath": "C:\\Users\\JESICA\\.nuget\\packages\\",
+        "outputPath": "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\51958\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\JESICA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net6.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -36,8 +43,8 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -53,7 +60,7 @@
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[6.0.16, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -74,6 +81,10 @@
             "Swashbuckle.AspNetCore.Annotations": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.15.0, )"
             }
           },
           "imports": [
@@ -87,6 +98,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.16, 6.0.16]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.16, 6.0.16]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.16, 6.0.16]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.16, 6.0.16]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -95,7 +124,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

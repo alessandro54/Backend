@@ -33,6 +33,10 @@ public class PublicationService : IPublicationService
         var existingUser = await _userTypeRepository.FindByIdAsync(publication.UserId);
         if (existingUser == null)
             return new PublicationResponse("Invalid User");
+        
+        var existingTitle = await _publicationRepository.FindByTitleAsync(publication.Title);
+        if (existingTitle != null)
+            return new PublicationResponse("Title already exist.");
 
         try
         {

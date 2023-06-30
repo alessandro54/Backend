@@ -32,6 +32,13 @@ public class PublicationRepository : BaseRepository, IPublicationRepository
             .ToListAsync();
     }
 
+    public async Task<Publication> FindByTitleAsync(string title)
+    {
+        return await _context.Publications
+            .Include(p => p.UserType)
+            .FirstOrDefaultAsync(p => p.Title == title);
+    }
+
     public async Task AddAsync(Publication publication)
     {
         await _context.Publications.AddAsync(publication);
