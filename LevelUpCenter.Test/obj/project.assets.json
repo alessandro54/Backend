@@ -72,6 +72,19 @@
           "lib/netstandard2.0/Cucumber.Messages.dll": {}
         }
       },
+      "DotEnv/0.0.1.1": {
+        "type": "package",
+        "dependencies": {
+          "SimpleJson": "0.38.0",
+          "System.IO.Abstractions": "1.4.0.86"
+        },
+        "compile": {
+          "lib/net40/DotEnv.dll": {}
+        },
+        "runtime": {
+          "lib/net40/DotEnv.dll": {}
+        }
+      },
       "FluentAssertions/6.2.0": {
         "type": "package",
         "dependencies": {
@@ -1645,6 +1658,9 @@
           }
         }
       },
+      "SimpleJson/0.38.0": {
+        "type": "package"
+      },
       "SpecFlow/3.9.22": {
         "type": "package",
         "dependencies": {
@@ -2125,6 +2141,15 @@
           "ref/netstandard1.5/System.IO.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "System.IO.Abstractions/1.4.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/net35/System.IO.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net35/System.IO.Abstractions.dll": {}
         }
       },
       "System.IO.Compression/4.3.0": {
@@ -3317,7 +3342,8 @@
           "MySql.EntityFrameworkCore": "7.0.2",
           "Swashbuckle.AspNetCore": "6.5.0",
           "Swashbuckle.AspNetCore.Annotations": "6.5.0",
-          "System.IdentityModel.Tokens.Jwt": "6.15.0"
+          "System.IdentityModel.Tokens.Jwt": "6.15.0",
+          "dotenv": "0.0.1.1"
         },
         "compile": {
           "bin/placeholder/LevelUpCenter.dll": {}
@@ -3422,6 +3448,18 @@
         "cucumber.messages.nuspec",
         "lib/net45/Cucumber.Messages.dll",
         "lib/netstandard2.0/Cucumber.Messages.dll"
+      ]
+    },
+    "DotEnv/0.0.1.1": {
+      "sha512": "6Dzbp8/xTWDNqEJBc8vTwdL2Ydelq3NWQFonpfbr8ZnQ8b24oCjhHLb29dZlY3+VoGw0C1ZmM6BOc58u9Hqqfw==",
+      "type": "package",
+      "path": "dotenv/0.0.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dotenv.0.0.1.1.nupkg.sha512",
+        "dotenv.nuspec",
+        "lib/net40/DotEnv.dll"
       ]
     },
     "FluentAssertions/6.2.0": {
@@ -5785,6 +5823,19 @@
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
+    "SimpleJson/0.38.0": {
+      "sha512": "Qvxm8S8fXa6/U6GLm1CJtDIqFFYKKw8cVaqMA/0I68q2avYZijt1IeEw6Y6PD2u5Hln1WrIR30ZseZOAWI8Ykg==",
+      "type": "package",
+      "path": "simplejson/0.38.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "SimpleJson.psm1",
+        "content/SimpleJson.cs.pp",
+        "simplejson.0.38.0.nupkg.sha512",
+        "simplejson.nuspec"
+      ]
+    },
     "SpecFlow/3.9.22": {
       "sha512": "A3wZUoJaJjkll/Qvun8SJo7W869kO+1hm/FNkidNdnfbmOJA4Q8f0J80pr5wqIkKaYMQTRVvt18Y6HisgEZbUw==",
       "type": "package",
@@ -7108,6 +7159,18 @@
         "ref/xamarinwatchos10/_._",
         "system.io.4.3.0.nupkg.sha512",
         "system.io.nuspec"
+      ]
+    },
+    "System.IO.Abstractions/1.4.0.86": {
+      "sha512": "Qjm6uyJAWR/Ct1Uoy1MLkMRZq8EBWTN/9dcRQVCEPFiEv9IK0LCCt1VkvOpGKcRWllJO0Y1sd9NcqGjkcECz2Q==",
+      "type": "package",
+      "path": "system.io.abstractions/1.4.0.86",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/System.IO.Abstractions.dll",
+        "system.io.abstractions.1.4.0.86.nupkg.sha512",
+        "system.io.abstractions.nuspec"
       ]
     },
     "System.IO.Compression/4.3.0": {
@@ -10213,5 +10276,27 @@
         "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'DotEnv 0.0.1.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "DotEnv",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.IO.Abstractions 1.4.0.86' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "System.IO.Abstractions",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

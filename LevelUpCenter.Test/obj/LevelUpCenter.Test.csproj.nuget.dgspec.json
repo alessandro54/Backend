@@ -166,6 +166,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[6.15.0, )"
+            },
+            "dotenv": {
+              "target": "Package",
+              "version": "[0.0.1.1, )"
             }
           },
           "imports": [
