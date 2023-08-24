@@ -1,40 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter.Test\\LevelUpCenter.Test.csproj": {}
+    "/Users/alessandro/Develop/Learning/c/#/Backend/LevelUpCenter.Test/LevelUpCenter.Test.csproj": {}
   },
   "projects": {
-    "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter.Test\\LevelUpCenter.Test.csproj": {
+    "/Users/alessandro/Develop/Learning/c/#/Backend/LevelUpCenter.Test/LevelUpCenter.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter.Test\\LevelUpCenter.Test.csproj",
+        "projectUniqueName": "/Users/alessandro/Develop/Learning/c/#/Backend/LevelUpCenter.Test/LevelUpCenter.Test.csproj",
         "projectName": "LevelUpCenter.Test",
-        "projectPath": "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter.Test\\LevelUpCenter.Test.csproj",
-        "packagesPath": "C:\\Users\\JESICA\\.nuget\\packages\\",
-        "outputPath": "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter.Test\\obj\\",
+        "projectPath": "/Users/alessandro/Develop/Learning/c/#/Backend/LevelUpCenter.Test/LevelUpCenter.Test.csproj",
+        "packagesPath": "/Users/alessandro/.nuget/packages/",
+        "outputPath": "/Users/alessandro/Develop/Learning/c/#/Backend/LevelUpCenter.Test/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\JESICA\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/alessandro/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter\\LevelUpCenter.csproj": {
-                "projectPath": "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter\\LevelUpCenter.csproj"
+              "/Users/alessandro/Develop/Learning/c/#/Backend/LevelUpCenter/LevelUpCenter.csproj": {
+                "projectPath": "/Users/alessandro/Develop/Learning/c/#/Backend/LevelUpCenter/LevelUpCenter.csproj"
               }
             }
           }
@@ -91,53 +84,31 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter\\LevelUpCenter.csproj": {
+    "/Users/alessandro/Develop/Learning/c/#/Backend/LevelUpCenter/LevelUpCenter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter\\LevelUpCenter.csproj",
+        "projectUniqueName": "/Users/alessandro/Develop/Learning/c/#/Backend/LevelUpCenter/LevelUpCenter.csproj",
         "projectName": "LevelUpCenter",
-        "projectPath": "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter\\LevelUpCenter.csproj",
-        "packagesPath": "C:\\Users\\JESICA\\.nuget\\packages\\",
-        "outputPath": "D:\\apliWeb\\Backend2\\Backend\\LevelUpCenter\\obj\\",
+        "projectPath": "/Users/alessandro/Develop/Learning/c/#/Backend/LevelUpCenter/LevelUpCenter.csproj",
+        "packagesPath": "/Users/alessandro/.nuget/packages/",
+        "outputPath": "/Users/alessandro/Develop/Learning/c/#/Backend/LevelUpCenter/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\JESICA\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/alessandro/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -208,24 +179,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.16, 6.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -234,7 +187,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
         }
       }
     }
