@@ -3,18 +3,14 @@ using LevelUpCenter.Security.Domain.Models;
 
 namespace LevelUpCenter.LookUrClimb.Domain.Models;
 
-public class Coach
+public class Apprentice
 {
     public int Id { get; set; }
-
     public string Nickname { get; set; } = "";
 
-    public string TwitchUrl { get; set; } = "";
 
-    public bool Verified { get; set; }  = false;
+    public Collection<Enrollment> Enrollments { get; set; } = new();
 
     public User User { get; set; }
     public int UserId { get; set; }
-
-    public Collection<Course> Courses { get; set; } = new();
 }

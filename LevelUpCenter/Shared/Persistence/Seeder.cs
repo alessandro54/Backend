@@ -44,7 +44,7 @@ public class Seeder
                 Name = _multiplayerGames[i],
                 Description = _faker.Commerce.ProductDescription(),
                 ReleaseYear = _faker.Random.Int(2000, 2021),
-                ImageUrl = _faker.Image.PicsumUrl(),
+                LogoUrl = _faker.Image.PicsumUrl(),
                 Rating = _faker.Random.Decimal(4, 5)
             };
             _games.Add(game);

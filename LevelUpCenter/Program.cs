@@ -90,12 +90,8 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
 // Dependency injection configuration
-builder.Services.AddScoped<IUserTypeRepository, UserTypeRepository>();
 builder.Services.AddScoped<IPublicationRepository, PublicationRepository>();
-builder.Services.AddScoped<IUserTypeService, UserTypeService>();
 builder.Services.AddScoped<IPublicationService, PublicationService>();
-builder.Services.AddScoped<IUserCoachService, UserCoachService>();
-builder.Services.AddScoped<IUserCoachRepository, UserCoachRepository>();
 
 builder.Services.AddScoped<IGameRepository, GameRepository>();
 builder.Services.AddScoped<IGameService, GameService>();

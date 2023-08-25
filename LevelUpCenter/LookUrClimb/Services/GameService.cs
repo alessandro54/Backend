@@ -9,13 +9,11 @@ public class GameService : IGameService
 {
     private readonly IGameRepository _gameRepository;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IUserTypeRepository _userTypeRepository;
 
-    public GameService(IGameRepository gameRepository, IUnitOfWork unitOfWork, IUserTypeRepository userTypeRepository)
+    public GameService(IGameRepository gameRepository, IUnitOfWork unitOfWork)
     {
         _gameRepository = gameRepository;
         _unitOfWork = unitOfWork;
-        _userTypeRepository = userTypeRepository;
     }
 
     public async Task<IEnumerable<Game>> ListByUserIdAsync(int userId)
@@ -49,7 +47,7 @@ public class GameService : IGameService
             return new GameResponse("Game not found.");
 
         existingGame.Name = game.Name;
-        existingGame.ImageUrl = game.ImageUrl;
+        existingGame.LogoUrl = game.LogoUrl;
         existingGame.Description = game.Description;
 
         try

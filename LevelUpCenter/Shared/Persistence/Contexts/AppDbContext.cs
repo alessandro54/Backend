@@ -7,14 +7,12 @@ namespace LevelUpCenter.Shared.Persistence.Contexts;
 
 public class AppDbContext : DbContext
 {
-    public DbSet<UserType> UserTypes { get; set; }
     public DbSet<Publication> Publications { get; set; }
-    public DbSet<UserCoach> UserCoaches { get; set; }
     public DbSet<Game> Games { get; set; }
 
     public DbSet<User> Users { get; set; }
-
-
+    public DbSet<Coach> Coaches { get; set; }
+    public DbSet<Comment> Comments { get; set; }
 
     public AppDbContext(DbContextOptions options) : base(options)
     {
@@ -24,51 +22,71 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(builder);
 
-        builder.Entity<UserType>().ToTable("User Type");
-        builder.Entity<UserType>().HasKey(p => p.Id);
-        builder.Entity<UserType>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<UserType>().Property(p => p.Username).IsRequired();
-        builder.Entity<UserType>().Property(p => p.TypeOfUser).IsRequired();
-        //relationships
-        builder.Entity<UserType>()
-            .HasMany(p => p.Publications)
-            .WithOne(p => p.UserType)
-            .HasForeignKey(p => p.UserId);
+        // User model
+        builder.Entity<User>().ToTable("Users");
+        builder.Entity<User>().HasKey(p => p.Id);
+        builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<User>().Property(p => p.Username).IsRequired().HasMaxLength(30);
+        builder.Entity<User>().Property(p => p.FirstName).IsRequired();
+        builder.Entity<Comment>()
+            .HasOne(c => c.Author)
+            .WithMany(c => c.Comments)
+            .HasForeignKey(c => c.AuthorId)
+            .OnDelete(DeleteBehavior.Restrict);
 
+        // Course model
+        builder.Entity<Course>().ToTable("Courses");
+        builder.Entity<Course>().HasKey(p => p.Id);
+        builder.Entity<Course>().Property(p => p.Title).IsRequired();
+        // One Course has many Publications
+        builder.Entity<Publication>()
+            .HasOne(e => e.Course)
+            .WithMany(course => course.Publications)
+            .HasForeignKey(e => e.CourseId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // Publication model
         builder.Entity<Publication>().ToTable("Publications");
         builder.Entity<Publication>().HasKey(p => p.Id);
         builder.Entity<Publication>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Publication>().Property(p => p.Description).IsRequired();
+        builder.Entity<Publication>().Property(p => p.Title).IsRequired();
+        // One Publication has many Comments
+        builder.Entity<Comment>()
+            .HasOne(c => c.Publication)
+            .WithMany(c => c.Comments)
+            .HasForeignKey(c => c.PublicationId)
+            .OnDelete(DeleteBehavior.Cascade);
 
-        builder.Entity<UserCoach>().ToTable("User Coach");
-        builder.Entity<UserCoach>().HasKey(p => p.Id);
-        builder.Entity<UserCoach>().Property(p => p.Id).IsRequired();
-        builder.Entity<UserType>()
-            .HasMany(p => p.UserCoaches)
-            .WithOne(p => p.UserType)
-            .HasForeignKey(p => p.UserId);
+        // Apprentice model
 
-        builder.Entity<UserCoach>().Property(p => p.Name);
-        builder.Entity<UserCoach>().Property(p => p.Last_name);
-        builder.Entity<UserCoach>().Property(p => p.Country).IsRequired();
-        builder.Entity<UserCoach>().Property(p => p.Age).IsRequired();
-        builder.Entity<UserCoach>().Property(p => p.Description);
-        builder.Entity<UserCoach>().Property(p => p.Image);
-        builder.Entity<UserCoach>().Property(p => p.Category).IsRequired();
-        builder.Entity<UserCoach>().Property(p => p.Price).IsRequired();
-        builder.Entity<UserCoach>().Property(p => p.Video);
-        builder.Entity<UserCoach>().Property(p => p.Rating);
-        builder.Entity<UserCoach>().Property(p => p.InventoryStatus);
+        // Coach model
+        builder.Entity<Coach>().ToTable("Coaches");
+        builder.Entity<Coach>().HasKey(p => p.Id);
+        builder.Entity<Coach>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Coach>().Property(p => p.Nickname).IsRequired();
+        builder.Entity<Coach>().HasIndex(p => p.Nickname).IsUnique();
+        builder.Entity<Coach>()
+            .HasOne(c => c.User);
+        // One Coach has many Courses
+        builder.Entity<Course>()
+            .HasOne(c => c.Coach)
+            .WithMany(coach => coach.Courses)
+            .HasForeignKey(c => c.CoachId)
+            .OnDelete(DeleteBehavior.Restrict);
 
-        // Constraints
-        builder.Entity<User>().ToTable("Users");
-        builder.Entity<User>().HasKey(p => p.Id);
-        builder.Entity<User>().Property(p =>
-            p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<User>().Property(p =>
-            p.Username).IsRequired().HasMaxLength(30);
-        builder.Entity<User>().Property(p => p.FirstName).IsRequired();
+        // Enrollment model
+        builder.Entity<Enrollment>().HasKey(e => new { e.CourseId, e.ApprenticeId });
+        builder.Entity<Enrollment>().HasIndex(e => new { e.CourseId, e.ApprenticeId }).IsUnique();
 
+        // Many Courses have many Apprentices
+        builder.Entity<Enrollment>()
+            .HasOne(e => e.Apprentice)
+            .WithMany(s => s.Enrollments)
+            .HasForeignKey(e => e.ApprenticeId);
+        builder.Entity<Enrollment>()
+            .HasOne(e => e.Course)
+            .WithMany(c => c.Enrollments)
+            .HasForeignKey(e => e.CourseId);
 
         // Game model
         builder.Entity<Game>().ToTable("Games");
@@ -77,6 +95,22 @@ public class AppDbContext : DbContext
         builder.Entity<Game>().Property(p => p.Name).IsRequired();
         builder.Entity<Game>().HasIndex(p => p.Name).IsUnique();
         builder.Entity<Game>().Property(p => p.Description).IsRequired();
+        // One Game has many Courses
+        builder.Entity<Course>()
+            .HasOne(p => p.Game)
+            .WithMany(p => p.Courses)
+            .HasForeignKey(c => c.GameId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+
+        // Comment model
+        builder.Entity<Comment>().ToTable("Comments");
+        builder.Entity<Comment>().HasKey(p => p.Id);
+        builder.Entity<Comment>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Comment>()
+            .HasOne(c => c.Parent)
+            .WithMany()
+            .HasForeignKey(c => c.ParentId);
 
         //Apply snake case naming convention
         builder.UseSnakeCaseNamingConvention();

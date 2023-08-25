@@ -8,9 +8,7 @@ public class ModelToResourceProfile : Profile
 {
     public ModelToResourceProfile()
     {
-        CreateMap<UserType, UserTypeResource>();
         CreateMap<Publication, PublicationResource>();
-        CreateMap<UserCoach, UserCoachResource>();
         CreateMap<Game, GameResource>();
     }
 }

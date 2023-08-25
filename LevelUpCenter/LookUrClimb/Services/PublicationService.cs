@@ -9,13 +9,11 @@ public class PublicationService : IPublicationService
 {
     private readonly IPublicationRepository _publicationRepository;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IUserTypeRepository _userTypeRepository;
 
-    public PublicationService(IPublicationRepository publicationRepository, IUnitOfWork unitOfWork, IUserTypeRepository userTypeRepository)
+    public PublicationService(IPublicationRepository publicationRepository, IUnitOfWork unitOfWork)
     {
         _publicationRepository = publicationRepository;
         _unitOfWork = unitOfWork;
-        _userTypeRepository = userTypeRepository;
     }
 
     public async Task<IEnumerable<Publication>> ListByUserIdAsync(int userId)
@@ -30,10 +28,10 @@ public class PublicationService : IPublicationService
 
     public async Task<PublicationResponse> SaveAsync(Publication publication)
     {
-        var existingUser = await _userTypeRepository.FindByIdAsync(publication.UserId);
-        if (existingUser == null)
-            return new PublicationResponse("Invalid User");
-        
+        // var existingUser = await _userTypeRepository.FindByIdAsync(publication.Course.CoachId);
+        // if (existingUser == null)
+        //     return new PublicationResponse("Invalid User");
+
         var existingTitle = await _publicationRepository.FindByTitleAsync(publication.Title);
         if (existingTitle != null)
             return new PublicationResponse("Title already exist.");
@@ -56,9 +54,9 @@ public class PublicationService : IPublicationService
         if (existingPublication == null)
             return new PublicationResponse("Publication not found.");
 
-        var existingUser = await _userTypeRepository.FindByIdAsync(publication.UserId);
-        if (existingUser == null)
-            return new PublicationResponse("Invalid user");
+        // var existingUser = await _userRepository.FindByIdAsync(publication.Course.CoachId);
+        // if (existingUser == null)
+        //     return new PublicationResponse("Invalid user");
 
         existingPublication.UrlImage = publication.UrlImage;
         existingPublication.Description = publication.Description;

@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
+using LevelUpCenter.LookUrClimb.Domain.Models;
 
 namespace LevelUpCenter.Security.Domain.Models;
 
@@ -13,4 +15,7 @@ public class User
 
     [JsonIgnore]
     public string PasswordHash { get; set; }
+
+    [JsonIgnore]
+    public Collection<Comment> Comments { get; set; } = new();
 }

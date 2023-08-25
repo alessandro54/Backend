@@ -1,3 +1,5 @@
+using System.Collections.ObjectModel;
+
 namespace LevelUpCenter.LookUrClimb.Domain.Models;
 
 public class Publication
@@ -7,7 +9,12 @@ public class Publication
     public string Description { get; set; }
     public string UrlImage { get; set; }
 
-    //realtionships
-    public int UserId { get; set; }
-    public UserType UserType { get; set; }
+    public Course Course { get; set; }
+    public int CourseId { get; set; }
+
+    // Has many Comments
+    public Collection<Comment> Comments { get; set; } = new();
+
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
+    public DateTime? UpdatedAt { get; set; }
 }
