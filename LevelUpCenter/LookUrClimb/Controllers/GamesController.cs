@@ -8,25 +8,37 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LevelUpCenter.LookUrClimb.Controllers;
 
+[AuthorizeAdmin]
 [ApiController]
 [Route("/api/v1/[controller]")]
-public class GameController : ControllerBase
+public class GamesController : ControllerBase
 {
-     private readonly IGameService _gameService;
+    private readonly IGameService _gameService;
     private readonly IMapper _mapper;
 
-    public GameController(IGameService gameService, IMapper mapper)
+    public GamesController(IGameService gameService, IMapper mapper)
     {
         _gameService = gameService;
         _mapper = mapper;
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async Task<IEnumerable<GameResource>> GetAllAsync()
     {
         var games = await _gameService.ListAsync();
         var resources = _mapper.Map<IEnumerable<Game>, IEnumerable<GameResource>>(games);
         return resources;
+    }
+
+    [AllowAnonymous]
+    [HttpGet]
+    [Route("{gameId:int}")]
+    public async Task<GameResource> GetOneAsync(int gameId)
+    {
+        var game = await _gameService.GetOneAsync(gameId);
+        var resource = _mapper.Map<Game, GameResource>(game);
+        return resource;
     }
 
     [HttpPost]

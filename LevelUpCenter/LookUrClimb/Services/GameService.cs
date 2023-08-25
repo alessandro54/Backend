@@ -26,6 +26,11 @@ public class GameService : IGameService
         return await _gameRepository.ListAsync();
     }
 
+    public async Task<Game> GetOneAsync(int id)
+    {
+        return await _gameRepository.FindByIdAsync(id);
+    }
+
     public async Task<GameResponse> SaveAsync(Game game)
     {
         try

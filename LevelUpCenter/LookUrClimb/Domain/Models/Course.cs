@@ -8,6 +8,9 @@ public class Course
     public string Title { get; set; }
     public string Description { get; set; }
 
+    public bool Published { get; set; }
+
+    public decimal Price { get; set; }
 
     public int GameId { get; set; }
     public Game Game { get; set; }

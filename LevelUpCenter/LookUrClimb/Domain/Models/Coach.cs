@@ -9,7 +9,7 @@ public class Coach
 
     public string Nickname { get; set; } = "";
 
-    public string TwitchUrl { get; set; } = "";
+    public string? TwitchUrl { get; set; }
 
     public bool Verified { get; set; }  = false;
 

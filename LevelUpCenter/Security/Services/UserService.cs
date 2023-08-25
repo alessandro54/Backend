@@ -30,14 +30,14 @@ public class UserService : IUserService
         var user = await _userRepository.FindByUsernameAsync(request.Username);
         Console.WriteLine($"Request: {request.Username}, {request.Password}");
         Console.WriteLine($"User: {user.Id}, {user.FirstName}, {user.LastName}, {user.Username}, {user.PasswordHash}");
-        
+
         // validate
         if (user == null || !BCryptNet.Verify(request.Password, user.PasswordHash))
         {
             Console.WriteLine("Authentication Error");
             throw new AppException("Username or password is incorrect");
         }
-            
+
         Console.WriteLine("Authentication successful. About to generate token");
         // authentication successful
         var response = _mapper.Map<AuthenticateResponse>(user);
@@ -59,10 +59,10 @@ public class UserService : IUserService
         return user;
     }
 
-    public async Task RegisterAsync(RegisterRequest request)
+    public async Task<User> RegisterAsync(RegisterRequest request)
     {
         // validate
-        if (_userRepository.ExistsByUsername(request.Username)) 
+        if (_userRepository.ExistsByUsername(request.Username))
             throw new AppException("Username '" + request.Username + "' is already taken");
 
         // map model to new user object
@@ -76,6 +76,7 @@ public class UserService : IUserService
         {
             await _userRepository.AddAsync(user);
             await _unitOfWork.CompleteAsync();
+            return user;
         }
         catch (Exception e)
         {
@@ -88,7 +89,7 @@ public class UserService : IUserService
         var user = GetById(id);
 
         // Validate
-        if (_userRepository.ExistsByUsername(request.Username)) 
+        if (_userRepository.ExistsByUsername(request.Username))
             throw new AppException("Username '" + request.Username + "' is already taken");
 
         // Hash password if it was entered
@@ -111,7 +112,7 @@ public class UserService : IUserService
     public async Task DeleteAsync(int id)
     {
         var user = GetById(id);
-            
+
         try
         {
             _userRepository.Remove(user);

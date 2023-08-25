@@ -8,6 +8,11 @@ public class AuthorizeAdminAttribute: Attribute, IAuthorizationFilter
 {
     public void OnAuthorization(AuthorizationFilterContext context)
     {
+        var allowAnonymous = context.ActionDescriptor.EndpointMetadata.OfType<AllowAnonymousAttribute>().Any();
+        // Then skip authorization process
+        if (allowAnonymous)
+            return;
+
         // Authorization process
         var user = (User?)context.HttpContext.Items["User"];
 
