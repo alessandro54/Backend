@@ -2,6 +2,7 @@
 using LevelUpCenter.LookUrClimb.Domain.Models;
 using LevelUpCenter.LookUrClimb.Domain.Services;
 using LevelUpCenter.LookUrClimb.Resources;
+using LevelUpCenter.Security.Authorization.Attributes;
 using LevelUpCenter.Shared.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,7 +36,7 @@ public class GameController : ControllerBase
             return BadRequest(ModelState.GetErrorMessages());
 
         var game = _mapper.Map<SaveGameResource, Game>(resource);
-        
+
         var result = await _gameService.SaveAsync(game);
         if (!result.Success)
             return BadRequest(result.Message);
@@ -50,15 +51,15 @@ public class GameController : ControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
-        
+
         var game = _mapper.Map<SaveGameResource, Game>(resource);
 
         var result = await _gameService.UpdateAsync(id, game);
         if (!result.Success)
             return BadRequest(result.Message);
-        
+
         var gameResource = _mapper.Map<Game, GameResource>(result.Resource);
-        
+
         return Ok(gameResource);
     }
 
@@ -68,9 +69,9 @@ public class GameController : ControllerBase
         var result = await _gameService.DeleteAsync(id);
         if (!result.Success)
             return BadRequest(result.Message);
-        
+
         var publicationResource = _mapper.Map<Game, GameResource>(result.Resource);
-        
+
         return Ok(publicationResource);
     }
 }

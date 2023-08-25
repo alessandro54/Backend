@@ -11,24 +11,21 @@ public class GameRepository : BaseRepository, IGameRepository
     public GameRepository(AppDbContext context) : base(context)
     {
     }
-    
+
     public async Task<IEnumerable<Game>> ListAsync()
     {
-        return await _context.Games.Include(p => p.UserType).ToListAsync();
+        return await _context.Games.ToListAsync();
     }
 
     public async Task<Game> FindByIdAsync(int gameId)
     {
         return await _context.Games
-            .Include(p => p.UserType)
             .FirstOrDefaultAsync(p => p.Id == gameId);
     }
 
     public async Task<IEnumerable<Game>> FindByUserIdAsync(int userId)
     {
         return await _context.Games
-            .Where(p => p.UserId == userId)
-            .Include(p => p.UserType)
             .ToListAsync();
     }
 

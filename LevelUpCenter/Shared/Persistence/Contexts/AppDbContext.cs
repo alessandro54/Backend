@@ -13,13 +13,13 @@ public class AppDbContext : DbContext
     public DbSet<Game> Games { get; set; }
 
     public DbSet<User> Users { get; set; }
-    
+
 
 
     public AppDbContext(DbContextOptions options) : base(options)
     {
     }
-    
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -39,7 +39,7 @@ public class AppDbContext : DbContext
         builder.Entity<Publication>().HasKey(p => p.Id);
         builder.Entity<Publication>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Publication>().Property(p => p.Description).IsRequired();
-        
+
         builder.Entity<UserCoach>().ToTable("User Coach");
         builder.Entity<UserCoach>().HasKey(p => p.Id);
         builder.Entity<UserCoach>().Property(p => p.Id).IsRequired();
@@ -47,7 +47,7 @@ public class AppDbContext : DbContext
             .HasMany(p => p.UserCoaches)
             .WithOne(p => p.UserType)
             .HasForeignKey(p => p.UserId);
-        
+
         builder.Entity<UserCoach>().Property(p => p.Name);
         builder.Entity<UserCoach>().Property(p => p.Last_name);
         builder.Entity<UserCoach>().Property(p => p.Country).IsRequired();
@@ -59,31 +59,26 @@ public class AppDbContext : DbContext
         builder.Entity<UserCoach>().Property(p => p.Video);
         builder.Entity<UserCoach>().Property(p => p.Rating);
         builder.Entity<UserCoach>().Property(p => p.InventoryStatus);
-        
+
         // Constraints
         builder.Entity<User>().ToTable("Users");
         builder.Entity<User>().HasKey(p => p.Id);
-        builder.Entity<User>().Property(p => 
+        builder.Entity<User>().Property(p =>
             p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<User>().Property(p => 
+        builder.Entity<User>().Property(p =>
             p.Username).IsRequired().HasMaxLength(30);
         builder.Entity<User>().Property(p => p.FirstName).IsRequired();
 
 
-       // Oj 
-        builder.Entity<UserType>()
-            .HasMany(p => p.Games)
-            .WithOne(p => p.UserType)
-            .HasForeignKey(p => p.UserId);
-
+        // Game model
         builder.Entity<Game>().ToTable("Games");
         builder.Entity<Game>().HasKey(p => p.Id);
         builder.Entity<Game>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Game>().Property(p => p.name).IsRequired();
-        builder.Entity<Game>().Property(p => p.description).IsRequired();
-        //oj
-        
-        //aply snake case naming convention
+        builder.Entity<Game>().Property(p => p.Name).IsRequired();
+        builder.Entity<Game>().HasIndex(p => p.Name).IsUnique();
+        builder.Entity<Game>().Property(p => p.Description).IsRequired();
+
+        //Apply snake case naming convention
         builder.UseSnakeCaseNamingConvention();
     }
 }

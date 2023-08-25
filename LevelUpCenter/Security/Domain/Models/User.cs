@@ -9,6 +9,8 @@ public class User
     public string LastName { get; set; }
     public string Username { get; set; }
 
+    public UserRole Role { get; set; } = UserRole.User;
+
     [JsonIgnore]
     public string PasswordHash { get; set; }
 }

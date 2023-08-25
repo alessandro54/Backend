@@ -10,6 +10,7 @@ using LevelUpCenter.Security.Domain.Repositories;
 using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Persistence.Repositories;
 using LevelUpCenter.Security.Services;
+using LevelUpCenter.Shared.Persistence;
 using LevelUpCenter.Shared.Persistence.Contexts;
 using LevelUpCenter.Shared.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -121,7 +122,10 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 {
+    context.Database.EnsureDeleted();
     context.Database.EnsureCreated();
+
+    new Seeder(context).Seed();
 }
 
 // Configure the HTTP request pipeline.
@@ -133,9 +137,10 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("v1/swagger.json", "v1");
         options.RoutePrefix = "swagger";
     });
+
 }
 
-// Configure CORS 
+// Configure CORS
 app.UseCors(x => x
     .AllowAnyOrigin()
     .AllowAnyMethod()

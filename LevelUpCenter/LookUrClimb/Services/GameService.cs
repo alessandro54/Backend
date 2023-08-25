@@ -30,10 +30,6 @@ public class GameService : IGameService
 
     public async Task<GameResponse> SaveAsync(Game game)
     {
-        var existingUser = await _userTypeRepository.FindByIdAsync(game.UserId);
-        if (existingUser == null)
-            return new GameResponse("Invalid User");
-
         try
         {
             await _gameRepository.AddAsync(game);
@@ -52,13 +48,9 @@ public class GameService : IGameService
         if (existingGame == null)
             return new GameResponse("Game not found.");
 
-        var existingUser = await _userTypeRepository.FindByIdAsync(game.UserId);
-        if (existingUser == null)
-            return new GameResponse("Invalid user");
-
-        existingGame.name = game.name;
-        existingGame.urlImage = game.urlImage;
-        existingGame.description = game.description;
+        existingGame.Name = game.Name;
+        existingGame.ImageUrl = game.ImageUrl;
+        existingGame.Description = game.Description;
 
         try
         {
