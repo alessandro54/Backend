@@ -17,4 +17,16 @@ public class HomeController
             Greet = "Hello, World!"
         });
     }
+
+    [AllowAnonymous]
+    [HttpGet]
+    [Route("/api/v1")]
+    public IActionResult GetApiGreet()
+    {
+        return new JsonResult(new
+        {
+            Time = DateTime.Now,
+            Greet = "Welcome to the Level Up Center API"
+        });
+    }
 }

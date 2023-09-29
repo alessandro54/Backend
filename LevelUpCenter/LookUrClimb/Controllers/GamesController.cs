@@ -41,6 +41,7 @@ public class GamesController : ControllerBase
         return resource;
     }
 
+    [AuthorizeAdmin]
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveGameResource resource)
     {
