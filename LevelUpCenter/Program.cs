@@ -122,10 +122,17 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 {
-    context.Database.EnsureDeleted();
-    context.Database.EnsureCreated();
 
-    new Seeder(context).Seed();
+    if (app.Environment.IsDevelopment())
+    {
+        context.Database.EnsureDeleted();
+        context.Database.EnsureCreated();
+        new Seeder(context).Seed();
+    }
+    else
+    {
+        context.Database.EnsureCreated();
+    }
 }
 
 // Configure the HTTP request pipeline.
