@@ -76,5 +76,6 @@ _[Ss]cripts
 
 .idea/*
 .vscode/*
+*.vs/*
 
 appsettings.Development.*
