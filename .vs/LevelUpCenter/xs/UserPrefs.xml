@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{56C3906F-F5C1-4CCD-AA2F-E5CD3E5AC881}|https">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="LevelUpCenter" expanded="True">
+            <Node name="LevelUpCenter">
+              <Node name="LookUrClimb" expanded="True">
+                <Node name="Controllers" expanded="True" />
+                <Node name="Domain" expanded="True">
+                  <Node name="Models" expanded="True">
+                    <Node name="Coach.cs" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.LevelUpCenter PreferredExecutionTarget="/Applications/Brave Browser.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

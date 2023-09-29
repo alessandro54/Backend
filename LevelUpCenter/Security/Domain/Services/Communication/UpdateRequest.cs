@@ -1,4 +1,6 @@
-﻿namespace LevelUpCenter.Security.Domain.Services.Communication;
+﻿using LevelUpCenter.Security.Domain.Models;
+
+namespace LevelUpCenter.Security.Domain.Services.Communication;
 
 public class UpdateRequest
 {
@@ -6,4 +8,6 @@ public class UpdateRequest
     public string LastName { get; set; }
     public string Username { get; set; }
     public string Password { get; set; }
+
+    public UserRole Role { get; set; }
 }

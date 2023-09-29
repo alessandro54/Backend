@@ -32,9 +32,8 @@ public class CoachesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] RegisterRequest request)
     {
-        var user = await _userService.RegisterAsync(request);
 
-        var result = await _coachService.SaveAsync(user);
+        var result = await _coachService.RegisterAsync(request);
 
         if (!result.Success)
             throw new Exception(result.Message);
@@ -42,5 +41,17 @@ public class CoachesController : ControllerBase
         var coachResource = _mapper.Map<Coach, SaveCoachResource>(result.Resource);
 
         return Created("Successfully created", coachResource);
+    }
+
+    [HttpGet]
+    [Route("{coachId:int}")]
+    public async Task<CoachResource?> GetOneAsync(int coachId)
+    {
+        var coach = await _coachService.GetOneAsync(coachId);
+
+        if (coach == null) return null;
+        var resource = _mapper.Map<Coach, CoachResource>(coach);
+
+        return resource;
     }
 }

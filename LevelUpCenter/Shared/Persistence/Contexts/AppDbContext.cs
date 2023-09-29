@@ -11,8 +11,9 @@ public class AppDbContext : DbContext
     public DbSet<Game> Games { get; set; }
 
     public DbSet<User> Users { get; set; }
-    public DbSet<Coach?> Coaches { get; set; }
+    public DbSet<Coach> Coaches { get; set; }
     public DbSet<Comment> Comments { get; set; }
+    public DbSet<Course> Courses { get; set; }
 
     public AppDbContext(DbContextOptions options) : base(options)
     {
@@ -101,7 +102,6 @@ public class AppDbContext : DbContext
             .WithMany(p => p.Courses)
             .HasForeignKey(c => c.GameId)
             .OnDelete(DeleteBehavior.Cascade);
-
 
         // Comment model
         builder.Entity<Comment>().ToTable("Comments");
