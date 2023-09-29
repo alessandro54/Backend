@@ -71,7 +71,12 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 // Add database connection
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = Environment.GetEnvironmentVariable("ASPNETCORE_DATABASE_STRING");
+
+if (connectionString == null)
+{
+    throw new Exception("Database connection string not found");
+}
 
 builder.Services.AddDbContext<AppDbContext>(
     options => options.UseMySQL(connectionString)

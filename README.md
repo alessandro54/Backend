@@ -22,6 +22,8 @@ Then fill with the correct env variables such the database connection string.
 dotnet build
 ```
 
+*This app uses MySQL so you need to set the connection string in `ASPNETCORE_DATABASE_STRING` variable*
+
 ```sh
 dotnet run
 ```
