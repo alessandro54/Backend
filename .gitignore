@@ -76,6 +76,6 @@ _[Ss]cripts
 
 *.idea/*
 .vscode/*
-*.vs/*
+LookUrClimb/.vs/*
 
 appsettings.Development.*
