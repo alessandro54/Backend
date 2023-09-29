@@ -40,8 +40,8 @@ namespace LevelUpCenter.Test.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "PublicationsServiceTests", "As a User\r\nI want to add new Publications in my account\r\nIn order to interact wit" +
-                    "h the gaming comunity.", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "PublicationsServiceTests", "As a User\nI want to add new Publications in my account\nIn order to interact with " +
+                    "the gaming comunity.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
