@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
-using LevelUpCenter.LookUrClimb.Domain.Models;
+using LevelUpCenter.Coaching.Domain.Models;
 
 namespace LevelUpCenter.Security.Domain.Models;
 

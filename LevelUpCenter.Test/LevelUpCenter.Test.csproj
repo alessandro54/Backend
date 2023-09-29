@@ -12,7 +12,9 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.16" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.11" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
+        <PackageReference Include="Moq" Version="4.20.69" />
         <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
         <PackageReference Include="SpecFlow.xUnit" Version="3.9.22" />
         <PackageReference Include="xunit" Version="2.4.1" />
@@ -25,6 +27,14 @@
 
     <ItemGroup>
       <ProjectReference Include="..\LevelUpCenter\LevelUpCenter.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Features\PublicationsServiceTests.feature" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckBuild Remove="Features\PublicationsServiceTests.feature.cs" />
     </ItemGroup>
 
 </Project>

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using LevelUpCenter.LookUrClimb.Domain.Repositories;
+using LevelUpCenter.Coaching.Domain.Repositories;
 using LevelUpCenter.Security.Authorization.Handlers.Interfaces;
 using LevelUpCenter.Security.Domain.Models;
 using LevelUpCenter.Security.Domain.Repositories;
