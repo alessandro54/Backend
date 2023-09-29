@@ -13,10 +13,6 @@
 ```shell
 cd LevelUpCenter
 ```
-```sh
-cp appsettings.json.example appsettings.Development.json
-```
-
 Then fill with the correct env variables such the database connection string.
 ```sh
 dotnet build
