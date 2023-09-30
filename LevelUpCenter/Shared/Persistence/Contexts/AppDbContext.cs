@@ -1,4 +1,4 @@
-using LevelUpCenter.LookUrClimb.Domain.Models;
+using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Security.Domain.Models;
 using LevelUpCenter.Shared.Extensions;
 using Microsoft.EntityFrameworkCore;

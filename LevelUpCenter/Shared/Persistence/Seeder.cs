@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 using Bogus;
-using LevelUpCenter.LookUrClimb.Domain.Models;
+using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Shared.Persistence.Contexts;
 
 namespace LevelUpCenter.Shared.Persistence;

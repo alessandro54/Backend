@@ -1,4 +1,4 @@
-using LevelUpCenter.LookUrClimb.Domain.Repositories;
+using LevelUpCenter.Coaching.Domain.Repositories;
 using LevelUpCenter.Shared.Persistence.Contexts;
 
 namespace LevelUpCenter.Shared.Persistence.Repositories;

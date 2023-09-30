@@ -1,7 +1,8 @@
-using LevelUpCenter.LookUrClimb.Services;
-using LevelUpCenter.LookUrClimb.Domain.Repositories;
-using LevelUpCenter.LookUrClimb.Domain.Services;
-using LevelUpCenter.LookUrClimb.Persistence.Repositories;
+using LevelUpCenter.Coaching.Domain.Repositories;
+using LevelUpCenter.Coaching.Domain.Services;
+using LevelUpCenter.Coaching.Mapping;
+using LevelUpCenter.Coaching.Persistence.Repositories;
+using LevelUpCenter.Coaching.Services;
 using LevelUpCenter.Security.Authorization.Handlers.Implementations;
 using LevelUpCenter.Security.Authorization.Handlers.Interfaces;
 using LevelUpCenter.Security.Authorization.Middleware;
@@ -10,7 +11,6 @@ using LevelUpCenter.Security.Domain.Repositories;
 using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Persistence.Repositories;
 using LevelUpCenter.Security.Services;
-using LevelUpCenter.Shared.Persistence;
 using LevelUpCenter.Shared.Persistence.Contexts;
 using LevelUpCenter.Shared.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -115,9 +115,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 // AutoMapper Configuration
 builder.Services.AddAutoMapper(
-    typeof(LevelUpCenter.LookUrClimb.Mapping.ModelToResourceProfile),
+    typeof(ModelToResourceProfile),
     typeof(LevelUpCenter.Security.Mapping.ModelToResourceProfile),
-    typeof(LevelUpCenter.LookUrClimb.Mapping.ResourceToModelProfile),
+    typeof(ResourceToModelProfile),
     typeof(LevelUpCenter.Security.Mapping.ResourceToModelProfile)
     );
 
@@ -130,9 +130,9 @@ using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 
     if (app.Environment.IsDevelopment())
     {
-        context.Database.EnsureDeleted();
+        //context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
-        new Seeder(context).Seed();
+        //new Seeder(context).Seed();
     }
     else
     {
@@ -172,4 +172,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-public partial class Program{ }
+namespace LevelUpCenter
+{
+    public partial class Program{ }
+}
