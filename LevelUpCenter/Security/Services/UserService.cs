@@ -47,6 +47,11 @@ public class UserService : IUserService
         return response;
     }
 
+    public Task<User> GetProfileAsync(string token)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<IEnumerable<User>> ListAsync()
     {
         return await _userRepository.ListAsync();

@@ -1,26 +1,27 @@
 version: '3.7'
-
+name: 'game-mentor'
 services:
-  web:
+  api:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: app-container
+    container_name: api
     ports:
-      - 8080:80
+      - "8080:80"
     environment:
-      ASPNET_CORE_ENVIRONMENT: Development
-      ASPNETCORE_DATABASE_STRING: "Server=mysql;Database=lvlupcenter;User=lvlupcenter;Password=lvlupcenter"
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_DATABASE_STRING: "Server=mysql;Database=game-mentor;User=game-mentor;Password=game-mentor"
     depends_on:
       - mysql
+    restart: always
   mysql:
-    image: mysql:8.0.19
-    container_name: mysql-container
+    image: mysql:8
+    container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: lvlupcenter
-      MYSQL_USER: lvlupcenter
-      MYSQL_PASSWORD: lvlupcenter
+      MYSQL_DATABASE: game-mentor
+      MYSQL_USER: game-mentor
+      MYSQL_PASSWORD: game-mentor
     volumes:
       - mysql-data:/var/lib/mysql
 

@@ -11,7 +11,7 @@ namespace LevelUpCenter.Security.Controllers;
 [Authorize]
 [ApiController]
 [Route("/api/v1/[controller]")]
-public class UsersController: ControllerBase
+public class UsersController : ControllerBase
 {
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
@@ -27,16 +27,41 @@ public class UsersController: ControllerBase
     [HttpPost("sign-in")]
     public async Task<IActionResult> Authenticate(AuthenticateRequest request)
     {
-        var response = await _userService.Authenticate(request);
-        return Ok(response);
+
+        try
+        {
+            var response = await _userService.Authenticate(request);
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            return Unauthorized(new { message = "Wrong credentials" });
+        }
     }
 
     [AllowAnonymous]
     [HttpPost("sign-up")]
     public async Task<IActionResult> Register(RegisterRequest request)
     {
-        await _userService.RegisterAsync(request);
-        return Ok(new { message = "Registration successful" });
+        try
+        {
+            await _userService.RegisterAsync(request);
+            return Ok(new { message = "Registration successful" });
+        }
+        catch (Exception ex)
+        {
+            return UnprocessableEntity(new { message = ex.Message });
+        }
+    }
+
+    [HttpGet("profile")]
+    public Task<IActionResult> GetProfile()
+    {
+        var token = (User) HttpContext.Items["User"]!;
+
+        var resource = _mapper.Map<User, UserResource>(token);
+
+        return Task.FromResult<IActionResult>(Ok(resource));
     }
 
     [AuthorizeAdmin]
@@ -69,5 +94,4 @@ public class UsersController: ControllerBase
         await _userService.DeleteAsync(id);
         return Ok(new { message = "User deleted successfully" });
     }
-
 }

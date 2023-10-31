@@ -11,6 +11,7 @@ using LevelUpCenter.Security.Domain.Repositories;
 using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Persistence.Repositories;
 using LevelUpCenter.Security.Services;
+using LevelUpCenter.Shared.Persistence;
 using LevelUpCenter.Shared.Persistence.Contexts;
 using LevelUpCenter.Shared.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -111,6 +112,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IJwtHandler, JwtHandler>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 
 
 // AutoMapper Configuration
@@ -130,9 +132,9 @@ using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 
     if (app.Environment.IsDevelopment())
     {
-        //context.Database.EnsureDeleted();
+        context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
-        //new Seeder(context).Seed();
+        new Seeder(context).Seed();
     }
     else
     {
