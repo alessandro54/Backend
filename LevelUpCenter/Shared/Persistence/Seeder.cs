@@ -1,7 +1,9 @@
 using System.Collections.ObjectModel;
 using Bogus;
 using LevelUpCenter.Coaching.Domain.Models;
+using LevelUpCenter.Security.Domain.Models;
 using LevelUpCenter.Shared.Persistence.Contexts;
+using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace LevelUpCenter.Shared.Persistence;
 
@@ -30,6 +32,7 @@ public class Seeder
     public void Seed()
     {
         SeedGames();
+        SeedAdmin();
         _context.Games.AddRange(_games);
         _context.SaveChanges();
     }
@@ -45,9 +48,25 @@ public class Seeder
                 Description = _faker.Commerce.ProductDescription(),
                 ReleaseYear = _faker.Random.Int(2000, 2021),
                 LogoUrl = _faker.Image.PicsumUrl(),
+                SplashUrl = "https://static-cdn.jtvnw.net/ttv-boxart/21779-285x380.jpg",
                 Rating = _faker.Random.Decimal(4, 5)
             };
             _games.Add(game);
         }
+    }
+
+    private void SeedAdmin()
+    {
+        var admin = new User
+        {
+            Username = "admin",
+            FirstName = "Alessandro",
+            LastName = "Chumpitaz",
+            Role = UserRole.Admin,
+            PasswordHash = BCryptNet.HashPassword("12345678")
+        };
+
+        _context.Users.Add(admin);
+
     }
 }

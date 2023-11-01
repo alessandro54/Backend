@@ -8,6 +8,7 @@ public class GameResource
     public string ImageUrl { get; set; }
 
     public string LogoUrl { get; set; }
+    public string SplashUrl { get; set; }
 
     public int ReleaseYear { get; set; }
 

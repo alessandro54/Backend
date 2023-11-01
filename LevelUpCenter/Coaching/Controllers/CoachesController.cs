@@ -28,6 +28,22 @@ public class CoachesController : ControllerBase
     }
 
     [AllowAnonymous]
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        try
+        {
+            var coaches = await _coachService.ListAsync();
+
+            var resources = _mapper.Map<IEnumerable<Coach>, IEnumerable<CoachResource>>(coaches!);
+            return Ok(resources);
+        } catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] RegisterRequest request)
     {
@@ -49,6 +65,8 @@ public class CoachesController : ControllerBase
         var coach = await _coachService.GetOneAsync(coachId);
 
         if (coach == null) return null;
+
+        Console.WriteLine(coach.User);
         var resource = _mapper.Map<Coach, CoachResource>(coach);
 
         return resource;

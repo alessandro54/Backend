@@ -26,7 +26,7 @@ public class HomeController
         return new JsonResult(new
         {
             Time = DateTime.Now,
-            Greet = "Welcome to the Level Up Center API"
+            Greet = "Welcome to the Game Mentor API"
         });
     }
 }
