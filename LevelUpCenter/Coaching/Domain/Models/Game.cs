@@ -10,7 +10,7 @@ public class Game
 
     public string LogoUrl { get; set; } = "";
 
-    public string? SplashUrl { get; set; }
+    public string SplashUrl { get; set;} = "";
 
     public int ReleaseYear { get; set; }
 
