@@ -32,11 +32,9 @@ public class CoachService : ICoachService
         return await _coachRepository.FindByIdAsync(id);
     }
 
-    public async Task<CoachResponse> RegisterAsync(RegisterRequest model)
+    public async Task<CoachResponse> RegisterAsync(RegisterRequest request)
     {
-        var user = await _userService.RegisterAsync(model);
-
-        user.Role = UserRole.Coach;
+        var user = await _userService.RegisterAsync(request);
 
         var coach = await this.SaveAsync(user);
 

@@ -1,6 +1,7 @@
 using AutoMapper;
 using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Coaching.Resources;
+using LevelUpCenter.Coaching.Resources.Game;
 
 namespace LevelUpCenter.Coaching.Mapping;
 

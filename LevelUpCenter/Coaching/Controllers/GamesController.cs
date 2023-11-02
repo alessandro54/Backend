@@ -2,6 +2,7 @@
 using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Coaching.Domain.Services;
 using LevelUpCenter.Coaching.Resources;
+using LevelUpCenter.Coaching.Resources.Game;
 using LevelUpCenter.Security.Authorization.Attributes;
 using LevelUpCenter.Shared.Extensions;
 using Microsoft.AspNetCore.Mvc;
@@ -33,10 +34,10 @@ public class GamesController : ControllerBase
 
     [AllowAnonymous]
     [HttpGet]
-    [Route("{gameId:int}")]
-    public async Task<GameResource> GetOneAsync(int gameId)
+    [Route("{id:int}")]
+    public async Task<GameResource> GetOneAsync(int id)
     {
-        var game = await _gameService.GetOneAsync(gameId);
+        var game = await _gameService.GetOneAsync(id);
         var resource = _mapper.Map<Game, GameResource>(game);
         return resource;
     }
@@ -59,6 +60,7 @@ public class GamesController : ControllerBase
         return Ok(gameResource);
     }
 
+    [AuthorizeAdmin]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateAsync(int id, [FromBody] SaveGameResource resource)
     {
@@ -76,6 +78,7 @@ public class GamesController : ControllerBase
         return Ok(gameResource);
     }
 
+    [AuthorizeAdmin]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(int id)
     {

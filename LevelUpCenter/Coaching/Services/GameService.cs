@@ -52,7 +52,7 @@ public class GameService : IGameService
             return new GameResponse("Game not found.");
 
         existingGame.Name = game.Name;
-        existingGame.LogoUrl = game.LogoUrl;
+        existingGame.IconUrl = game.IconUrl;
         existingGame.Description = game.Description;
 
         try

@@ -13,8 +13,6 @@ public class User
 
     public UserRole Role { get; set; } = UserRole.User;
 
-    [JsonIgnore] public Coach? Coach { get; set; }
-
     [JsonIgnore]
     public string PasswordHash { get; set; }
 

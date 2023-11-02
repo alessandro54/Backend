@@ -19,7 +19,7 @@ public class CoachRepository : BaseRepository, ICoachRepository
 
     public async Task<Coach?> FindByIdAsync(int id)
     {
-        return await _context.Coaches
+        return await _context.Coaches.Include(c => c.User)
             .FirstOrDefaultAsync(p => p!.Id == id);
     }
 

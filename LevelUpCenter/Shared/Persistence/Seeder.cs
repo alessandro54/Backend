@@ -33,6 +33,7 @@ public class Seeder
     {
         SeedGames();
         SeedAdmin();
+        SeedCoach();
         _context.Games.AddRange(_games);
         _context.SaveChanges();
     }
@@ -47,7 +48,8 @@ public class Seeder
                 Name = _multiplayerGames[i],
                 Description = _faker.Commerce.ProductDescription(),
                 ReleaseYear = _faker.Random.Int(2000, 2021),
-                LogoUrl = _faker.Image.PicsumUrl(),
+                IconUrl = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5ab19f85-6c25-4d8d-a4d5-9e8070c3164c/d6w0695-1892f196-2ac3-4889-9f72-f2c11a27b31c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVhYjE5Zjg1LTZjMjUtNGQ4ZC1hNGQ1LTllODA3MGMzMTY0Y1wvZDZ3MDY5NS0xODkyZjE5Ni0yYWMzLTQ4ODktOWY3Mi1mMmMxMWEyN2IzMWMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.n-tG_jJvdWEXT36j0di-JiT1SkHKZ33AEdLeyrslBVI",
+                BannerUrl = _faker.Image.PicsumUrl(),
                 SplashUrl = "https://static-cdn.jtvnw.net/ttv-boxart/21779-285x380.jpg",
                 Rating = _faker.Random.Decimal(4, 5)
             };
@@ -67,6 +69,27 @@ public class Seeder
         };
 
         _context.Users.Add(admin);
+
+    }
+
+    private void SeedCoach()
+    {
+        var user = _context.Users.Add(new User
+        {
+            Username = "coach",
+            FirstName = "Michael",
+            LastName = "Campos",
+            Role = UserRole.Coach,
+            PasswordHash = BCryptNet.HashPassword("12345678")
+        });
+
+        var coach = new Coach
+        {
+            Nickname = "coach777",
+            User = user.Entity
+        };
+
+        _context.Coaches.Add(coach);
 
     }
 }

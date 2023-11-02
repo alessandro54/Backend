@@ -67,11 +67,11 @@ public class AppDbContext : DbContext
         builder.Entity<Coach>().Property(p => p.Nickname).IsRequired();
         builder.Entity<Coach>().HasIndex(p => p.Nickname).IsUnique();
 
-        builder.Entity<User>()
-            .HasOne(u => u.Coach)
-            .WithOne(c => c.User)
-            .HasForeignKey<Coach>(c => c.UserId)
-            .OnDelete(DeleteBehavior.Cascade);
+        // One Coach has a User
+        builder.Entity<Coach>()
+            .HasOne(c => c.User)
+            .WithOne()
+            .HasForeignKey<Coach>(c => c.UserId);
         // One Coach has many Courses
         builder.Entity<Course>()
             .HasOne(c => c.Coach)

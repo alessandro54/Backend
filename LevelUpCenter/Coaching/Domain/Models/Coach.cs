@@ -15,8 +15,9 @@ public class Coach
 
     public bool Verified { get; set; }  = false;
 
-    public User User { get; set; }
+    // Relationships
     public int UserId { get; set; }
+    public User User { get; set; }
 
     public Collection<Course> Courses { get; set; } = new();
 }

@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using AutoMapper;
 using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Coaching.Domain.Services;
@@ -66,7 +67,6 @@ public class CoachesController : ControllerBase
 
         if (coach == null) return null;
 
-        Console.WriteLine(coach.User);
         var resource = _mapper.Map<Coach, CoachResource>(coach);
 
         return resource;
