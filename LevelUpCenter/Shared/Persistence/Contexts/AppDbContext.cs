@@ -60,25 +60,26 @@ public class AppDbContext : DbContext
 
         // Apprentice model
 
-        // Coach model
+    // Coach domain
         builder.Entity<Coach>().ToTable("Coaches");
         builder.Entity<Coach>().HasKey(p => p.Id);
         builder.Entity<Coach>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Coach>().Property(p => p.Nickname).IsRequired();
         builder.Entity<Coach>().HasIndex(p => p.Nickname).IsUnique();
 
-        // One Coach has a User
-        builder.Entity<Coach>()
-            .HasOne(c => c.User)
-            .WithOne()
-            .HasForeignKey<Coach>(c => c.UserId);
         // One Coach has many Courses
         builder.Entity<Course>()
             .HasOne(c => c.Coach)
             .WithMany(coach => coach.Courses)
             .HasForeignKey(c => c.CoachId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.Cascade);
 
+        // One Coach has an User
+        builder.Entity<Coach>()
+            .HasOne(c => c.User)
+            .WithOne()
+            .HasForeignKey<Coach>(c => c.UserId);
+    // END Coach domain
         // Enrollment model
         builder.Entity<Enrollment>().HasKey(e => new { e.CourseId, e.ApprenticeId });
         builder.Entity<Enrollment>().HasIndex(e => new { e.CourseId, e.ApprenticeId }).IsUnique();

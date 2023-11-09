@@ -34,7 +34,7 @@ public class CoachServiceTests
         var coach = new Coach { Id = 1, Nickname = "sanity", User = user };
 
         var userRepositoryMock = new Mock<IUserService>();
-        userRepositoryMock.Setup(repo => repo.RegisterAsync(model)).ReturnsAsync(user);
+        userRepositoryMock.Setup(repo => repo.RegisterAsync(model, UserRole.User)).ReturnsAsync(user);
 
         var unitOfWorkMock = new Mock<IUnitOfWork>();
         var coachRepositoryMock = new Mock<ICoachRepository>();

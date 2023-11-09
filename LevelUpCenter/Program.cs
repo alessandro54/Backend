@@ -105,6 +105,9 @@ builder.Services.AddScoped<IPublicationService, PublicationService>();
 builder.Services.AddScoped<IGameRepository, GameRepository>();
 builder.Services.AddScoped<IGameService, GameService>();
 
+builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+builder.Services.AddScoped<ICourseService, CourseService>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //
 
@@ -132,9 +135,9 @@ using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 
     if (app.Environment.IsDevelopment())
     {
-        context.Database.EnsureDeleted();
+        //context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
-        new Seeder(context).Seed();
+        //new Seeder(context).Seed();
     }
     else
     {
@@ -146,11 +149,11 @@ using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("v1/swagger.json", "v1");
-        options.RoutePrefix = "swagger";
-    });
+     app.UseSwaggerUI(options =>
+     {
+         options.SwaggerEndpoint("v1/swagger.json", "v1");
+         options.RoutePrefix = "swagger";
+     });
 
 }
 

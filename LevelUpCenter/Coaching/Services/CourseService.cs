@@ -2,6 +2,7 @@ using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Coaching.Domain.Repositories;
 using LevelUpCenter.Coaching.Domain.Services;
 using LevelUpCenter.Coaching.Domain.Services.Communication;
+using LevelUpCenter.Coaching.Resources.Course;
 
 namespace LevelUpCenter.Coaching.Services;
 
@@ -37,6 +38,24 @@ public class CourseService : ICourseService
         catch (Exception e)
         {
             return new CourseResponse($"An error occurred while saving the publication: {e.Message}");
+        }
+    }
+
+    public async Task<CourseResponse> DeleteAsync(int id)
+    {
+        var existing = await _courseRepository.FindByIdAsync(id);
+        if (existing == null)
+            return new CourseResponse("Course not found.");
+
+        try
+        {
+            _courseRepository.Remove(existing);
+            await _unitOfWork.CompleteAsync();
+            return new CourseResponse(existing);
+        }
+        catch (Exception e)
+        {
+            return new CourseResponse($"An error occurred while deleting the course: {e.Message}");
         }
     }
 }

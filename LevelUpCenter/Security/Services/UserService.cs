@@ -64,7 +64,7 @@ public class UserService : IUserService
         return user;
     }
 
-    public async Task<User> RegisterAsync(RegisterRequest request)
+    public async Task<User> RegisterAsync(RegisterRequest request, UserRole role = UserRole.User)
     {
         // validate
         if (_userRepository.ExistsByUsername(request.Username))
@@ -74,6 +74,7 @@ public class UserService : IUserService
         var user = _mapper.Map<User>(request);
 
         // hash password
+        user.Role = role;
         user.PasswordHash = BCryptNet.HashPassword(request.Password);
 
         // save user
