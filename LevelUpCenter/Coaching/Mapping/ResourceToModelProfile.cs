@@ -11,10 +11,13 @@ public class ResourceToModelProfile : Profile
 {
     public ResourceToModelProfile()
     {
+        // Publications
         CreateMap<SavePublicationResource, Publication>();
+        // Courses
         CreateMap<SaveCourseResource, Course>();
+        // Games
         CreateMap<SaveGameResource, Game>();
-
+        CreateMap<UpdateGameResource, Game>();
         // Coaches
         CreateMap<SaveCoachResource, Coach>();
     }

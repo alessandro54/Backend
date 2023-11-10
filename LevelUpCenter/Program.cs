@@ -84,7 +84,7 @@ builder.Services.AddDbContext<AppDbContext>(
         .LogTo(Console.WriteLine, LogLevel.Information)
         .EnableSensitiveDataLogging()
         .EnableDetailedErrors()
-    );
+);
 
 // Add lowercase routes
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
@@ -124,7 +124,7 @@ builder.Services.AddAutoMapper(
     typeof(LevelUpCenter.Security.Mapping.ModelToResourceProfile),
     typeof(ResourceToModelProfile),
     typeof(LevelUpCenter.Security.Mapping.ResourceToModelProfile)
-    );
+);
 
 var app = builder.Build();
 
@@ -132,12 +132,11 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 {
-
     if (app.Environment.IsDevelopment())
     {
-        //context.Database.EnsureDeleted();
+        context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
-        //new Seeder(context).Seed();
+        new Seeder(context).Seed();
     }
     else
     {
@@ -149,12 +148,11 @@ using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-     app.UseSwaggerUI(options =>
-     {
-         options.SwaggerEndpoint("v1/swagger.json", "v1");
-         options.RoutePrefix = "swagger";
-     });
-
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("v1/swagger.json", "v1");
+        options.RoutePrefix = "swagger";
+    });
 }
 
 // Configure CORS
@@ -177,7 +175,10 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
 namespace LevelUpCenter
 {
-    public partial class Program{ }
+    public partial class Program
+    {
+    }
 }

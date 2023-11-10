@@ -12,7 +12,11 @@ public class ModelToResourceProfile : Profile
     public ModelToResourceProfile()
     {
         CreateMap<Publication, PublicationResource>();
+        // Games
+        CreateMap<Game, SaveGameResource>();
+        CreateMap<Game, UpdateGameResource>();
         CreateMap<Game, GameResource>();
+
         CreateMap<Course, CourseResource>();
 
         // Coaches
