@@ -13,38 +13,82 @@ namespace LevelUpCenter.Test.Coaching.Services;
 
 public class CoachServiceTests
 {
-    private readonly ITestOutputHelper _testOutputHelper;
+    private readonly Mock<IUserService> _userServiceMock;
+    private readonly Mock<IUnitOfWork> _unitOfWorkMock;
+    private readonly Mock<ICoachRepository> _coachRepositoryMock;
 
-    public CoachServiceTests(ITestOutputHelper testOutputHelper)
+    public CoachServiceTests()
     {
-        _testOutputHelper = testOutputHelper;
+        _userServiceMock = new Mock<IUserService>();
+        _unitOfWorkMock = new Mock<IUnitOfWork>();
+        _coachRepositoryMock = new Mock<ICoachRepository>();
+    }
+
+    [Fact]
+    public async Task ListAsync_ShouldReturnListOfCoaches()
+    {
+        // Arrange
+        var coaches = new[] { new Coach(), new Coach() };
+
+        _coachRepositoryMock
+            .Setup(r => r.ListAsync())
+                .ReturnsAsync(coaches);
+
+        var coachService = new CoachService(_coachRepositoryMock.Object, _userServiceMock.Object, _unitOfWorkMock.Object);
+
+        // Act
+        var result = await coachService.ListAsync();
+
+        // Assert
+        Assert.NotNull(result);
+
+        var enumerable = result as Coach?[] ?? result.ToArray();
+
+        Assert.IsType<Coach>(enumerable.First());
+        Assert.Equal(2, enumerable.Length);
+    }
+
+    [Fact]
+    public async Task GetOneAsync_ShouldReturnCoach()
+    {
+        // Arrange
+        var coach = new Coach{ Nickname = "test" };
+
+        _coachRepositoryMock
+            .Setup(r => r.FindByIdAsync(It.IsAny<int>()))
+                .ReturnsAsync(coach);
+
+        var coachService = new CoachService(_coachRepositoryMock.Object, _userServiceMock.Object, _unitOfWorkMock.Object);
+
+        // Act
+        var result = await coachService.GetOneAsync(1);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.IsType<Coach>(result);
+        Assert.Equal(coach.Nickname, result?.Nickname);
     }
 
     [Fact]
     public async Task RegisterAsync_WithValidModel_ShouldReturnCoachResponse()
     {
         // Arrange
-        var model = new RegisterRequest { FirstName = "Alessandro", LastName = "Chumpitaz", Username = "sanity", Password = "123456" };
+        var model = new RegisterRequest
+            { FirstName = "Alessandro", LastName = "Chumpitaz", Username = "sanity", Password = "123456" };
 
         var user = new User
-        {
-            Id = 1, FirstName = "Alessandro", LastName = "Chumpitaz", Username = "sanity", PasswordHash = "@!%!@%!@%!@"
-        };
+        { Id = 1, FirstName = "Alessandro", LastName = "Chumpitaz", Username = "sanity", PasswordHash = "@!%!@%!@%!@" };
 
         var coach = new Coach { Id = 1, Nickname = "sanity", User = user };
 
-        var userRepositoryMock = new Mock<IUserService>();
-        userRepositoryMock.Setup(repo => repo.RegisterAsync(model)).ReturnsAsync(user);
+        _userServiceMock.Setup(repo => repo.RegisterAsync(model)).ReturnsAsync(user);
 
-        var unitOfWorkMock = new Mock<IUnitOfWork>();
-        var coachRepositoryMock = new Mock<ICoachRepository>();
-
-        coachRepositoryMock.Setup(
+        _coachRepositoryMock.Setup(
             repo => repo.AddAsync(
                 It.IsAny<Coach>())
         ).Callback<Coach>(c => coach = c);
 
-        var coachService = new CoachService(coachRepositoryMock.Object, userRepositoryMock.Object, unitOfWorkMock.Object);
+        var coachService = new CoachService(_coachRepositoryMock.Object, _userServiceMock.Object, _unitOfWorkMock.Object);
 
         // Act
         var result = await coachService.RegisterAsync(model);

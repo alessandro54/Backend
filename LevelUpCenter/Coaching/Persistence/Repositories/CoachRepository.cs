@@ -16,25 +16,21 @@ public class CoachRepository : BaseRepository, ICoachRepository
     {
         return await _context.Coaches.ToListAsync();
     }
-
     public async Task<Coach?> FindByIdAsync(int id)
     {
         return await _context.Coaches.Include(c => c.User)
             .FirstOrDefaultAsync(p => p!.Id == id);
     }
-
     public async Task AddAsync(Coach coach)
     {
         await _context.Coaches.AddAsync(coach);
     }
-
     public void Update(Coach coach)
     {
-        //throw new NotImplementedException();
+        _context.Coaches.Update(coach);
     }
-
     public void Remove(Coach coach)
     {
-        //throw new NotImplementedException();
+        _context.Coaches.Remove(coach);
     }
 }

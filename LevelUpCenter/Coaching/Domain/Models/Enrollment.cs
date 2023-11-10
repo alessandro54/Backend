@@ -2,8 +2,8 @@ namespace LevelUpCenter.Coaching.Domain.Models;
 
 public class Enrollment
 {
-    public int ApprenticeId { get; set; }
-    public Apprentice Apprentice { get; set; } = null!;
+    public int LearnerId { get; set; }
+    public Learner Learner { get; set; } = null!;
 
     public int CourseId { get; set; }
     public Course Course { get; set; } = null!;

@@ -2,7 +2,6 @@ using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Coaching.Domain.Repositories;
 using LevelUpCenter.Coaching.Domain.Services;
 using LevelUpCenter.Coaching.Domain.Services.Communication;
-using LevelUpCenter.Coaching.Resources.Coach;
 using LevelUpCenter.Security.Domain.Models;
 using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Domain.Services.Communication;
@@ -36,7 +35,7 @@ public class CoachService : ICoachService
     {
         var user = await _userService.RegisterAsync(request);
 
-        var coach = await this.SaveAsync(user);
+        var coach = await SaveAsync(user);
 
         return coach;
     }
