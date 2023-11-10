@@ -1,7 +1,6 @@
 using AutoMapper;
 using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Coaching.Domain.Services;
-using LevelUpCenter.Coaching.Resources.Coach;
 using LevelUpCenter.Coaching.Resources.Course;
 using LevelUpCenter.Security.Authorization.Attributes;
 using LevelUpCenter.Security.Domain.Models;

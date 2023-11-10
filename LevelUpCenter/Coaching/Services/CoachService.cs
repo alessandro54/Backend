@@ -40,7 +40,7 @@ public class CoachService : ICoachService
     {
         var user = await _userService.RegisterAsync(request, UserRole.Coach);
 
-        var coach = await this.SaveAsync(user);
+        var coach = await SaveAsync(user);
 
         return coach;
     }
@@ -56,11 +56,12 @@ public class CoachService : ICoachService
             };
             await _coachRepository.AddAsync(coach);
             await _unitOfWork.CompleteAsync();
+
             return new CoachResponse(coach);
         }
         catch (Exception e)
         {
-            return new CoachResponse($"An error occurred while saving the coach: {e.Message}");
+            return new CoachResponse($"An error occurred while saving the coach: {user}");
         }
     }
 }
