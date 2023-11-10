@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 using LevelUpCenter.Security.Domain.Models;
 
 namespace LevelUpCenter.Coaching.Domain.Models;
@@ -20,4 +21,6 @@ public class Coach
     public User User { get; set; }
 
     public Collection<Course> Courses { get; set; } = new();
+
+    public bool IsCourseOwner(int courseId) => Courses.Any(c => c.Id == courseId);
 }

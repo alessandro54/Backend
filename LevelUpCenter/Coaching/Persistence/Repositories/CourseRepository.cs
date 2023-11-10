@@ -35,6 +35,6 @@ public class CourseRepository : BaseRepository, ICourseRepository
 
     public void Remove(Course course)
     {
-        throw new NotImplementedException();
+        _context.Courses.Remove(course);
     }
 }

@@ -22,4 +22,9 @@ public class Game
 
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public DateTime? UpdatedAt { get; set; }
+
+    public override string ToString()
+    {
+        return $"Game: id:{Id} name:{Name} desc:{Description} rating:{Rating} IconUrl:{IconUrl} BannerUrl:{BannerUrl} SplashUrl:{SplashUrl}";
+    }
 }
