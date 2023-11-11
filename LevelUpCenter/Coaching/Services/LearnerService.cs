@@ -31,13 +31,30 @@ public class LearnerService : ILearnerService
         return await _learnerRepository.FindByIdAsync(id);
     }
 
-    public Task<LearnerResponse> RegisterAsync(RegisterRequest request)
+    public async Task<LearnerResponse> RegisterAsync(RegisterRequest request)
     {
-        return NotImplementedException();
+        var user = await _userService.RegisterAsync(request);
+
+        var coach = new Learner
+        {
+            User = user,
+            Nickname = request.Username
+        };
+
+        return await SaveAsync(coach);
     }
 
-    public Task<LearnerResponse> SaveAsync(User user)
+    public async Task<LearnerResponse> SaveAsync(Learner learner)
     {
-        return NotImplementedException();
+        try
+        {
+            await _learnerRepository.AddAsync(learner);
+            await _unitOfWork.CompleteAsync();
+            return new LearnerResponse(learner);
+        }
+        catch (Exception e)
+        {
+            return new LearnerResponse($"An error occurred while saving the learner: {e.Message}");
+        }
     }
 }

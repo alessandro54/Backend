@@ -5,7 +5,8 @@ using LevelUpCenter.Coaching.Domain.Services.Communication;
 
 namespace LevelUpCenter.Coaching.Services;
 
-public class CourseService : ICourseService
+public class
+    CourseService : ICourseService
 {
     private readonly ICourseRepository _courseRepository;
     private readonly IUnitOfWork _unitOfWork;
