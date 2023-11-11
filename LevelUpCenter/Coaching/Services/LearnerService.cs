@@ -2,7 +2,6 @@ using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Coaching.Domain.Repositories;
 using LevelUpCenter.Coaching.Domain.Services;
 using LevelUpCenter.Coaching.Domain.Services.Communication;
-using LevelUpCenter.Security.Domain.Models;
 using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Domain.Services.Communication;
 

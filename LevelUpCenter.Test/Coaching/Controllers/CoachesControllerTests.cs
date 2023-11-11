@@ -34,12 +34,10 @@ public class CoachesControllerTests
     {
         // Arrange
         var mockCoachesService = new Mock<ICoachService>();
-        var mockUserService = new Mock<IUserService>();
         var mockMapper = new Mock<IMapper>();
 
         var controller = new CoachesController(
             mockCoachesService.Object,
-            mockUserService.Object,
             mockMapper.Object
         );
 
@@ -82,7 +80,6 @@ public class CoachesControllerTests
 
         var controller = new CoachesController(
             mockCoachService.Object,
-            Mock.Of<IUserService>(),
             mockMapper.Object
         );
 
@@ -113,7 +110,7 @@ public class CoachesControllerTests
         var mockCoachService = new Mock<ICoachService>();
         var mockMapper = new Mock<IMapper>();
 
-        var controller = new CoachesController(mockCoachService.Object, Mock.Of<IUserService>(), mockMapper.Object);
+        var controller = new CoachesController(mockCoachService.Object, mockMapper.Object);
 
         mockCoachService
             .Setup(service => service.GetOneAsync(_coach.Id))

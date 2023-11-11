@@ -7,22 +7,14 @@ using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Domain.Services.Communication;
 using Moq;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace LevelUpCenter.Test.Coaching.Services;
 
 public class CoachServiceTests
 {
-    private readonly Mock<IUserService> _userServiceMock;
-    private readonly Mock<IUnitOfWork> _unitOfWorkMock;
-    private readonly Mock<ICoachRepository> _coachRepositoryMock;
-
-    public CoachServiceTests()
-    {
-        _userServiceMock = new Mock<IUserService>();
-        _unitOfWorkMock = new Mock<IUnitOfWork>();
-        _coachRepositoryMock = new Mock<ICoachRepository>();
-    }
+    private readonly Mock<IUserService> _userServiceMock = new();
+    private readonly Mock<IUnitOfWork> _unitOfWorkMock = new();
+    private readonly Mock<ICoachRepository> _coachRepositoryMock = new();
 
     [Fact]
     public async Task ListAsync_ShouldReturnListOfCoaches()

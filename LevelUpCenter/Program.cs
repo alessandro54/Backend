@@ -99,6 +99,9 @@ builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSet
 builder.Services.AddScoped<ICoachRepository, CoachRepository>();
 builder.Services.AddScoped<ICoachService, CoachService>();
 
+builder.Services.AddScoped<ILearnerRepository, LearnerRepository>();
+builder.Services.AddScoped<ILearnerService, LearnerService>();
+
 builder.Services.AddScoped<IPublicationRepository, PublicationRepository>();
 builder.Services.AddScoped<IPublicationService, PublicationService>();
 
@@ -106,7 +109,6 @@ builder.Services.AddScoped<IGameRepository, GameRepository>();
 builder.Services.AddScoped<IGameService, GameService>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-//
 
 // Security Injection Configuration
 builder.Services.AddScoped<IJwtHandler, JwtHandler>();
