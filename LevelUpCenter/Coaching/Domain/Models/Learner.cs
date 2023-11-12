@@ -3,7 +3,7 @@ using LevelUpCenter.Security.Domain.Models;
 
 namespace LevelUpCenter.Coaching.Domain.Models;
 
-public class Apprentice
+public class Learner
 {
     public int Id { get; set; }
     public string Nickname { get; set; } = "";

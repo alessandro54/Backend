@@ -1,10 +1,8 @@
-using System.ComponentModel;
 using AutoMapper;
 using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Coaching.Domain.Services;
 using LevelUpCenter.Coaching.Resources.Coach;
 using LevelUpCenter.Security.Authorization.Attributes;
-using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Domain.Services.Communication;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -18,13 +16,11 @@ namespace LevelUpCenter.Coaching.Controllers;
 public class CoachesController : ControllerBase
 {
     private readonly ICoachService _coachService;
-    private readonly IUserService _userService;
     private readonly IMapper _mapper;
 
-    public CoachesController(ICoachService coachService, IUserService userService, IMapper mapper)
+    public CoachesController(ICoachService coachService, IMapper mapper)
     {
         _coachService = coachService;
-        _userService = userService;
         _mapper = mapper;
     }
 
@@ -45,7 +41,7 @@ public class CoachesController : ControllerBase
     }
 
     [AllowAnonymous]
-    [HttpPost]
+    [HttpPost("register")]
     public async Task<IActionResult> PostAsync([FromBody] RegisterRequest request)
     {
 
