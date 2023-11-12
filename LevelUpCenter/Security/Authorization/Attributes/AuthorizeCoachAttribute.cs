@@ -17,8 +17,9 @@ public class AuthorizeCoachAttribute: Attribute, IAuthorizationFilter
 
         var user = (User?) context.HttpContext.Items["User"];
 
-        if (user is not { Role: UserRole.Coach })
-            context.Result = new JsonResult(new { message = "You Need to be an Admin" })
+        // i want to the role admin too
+        if (user!.Role is not (UserRole.Coach or UserRole.Admin))
+            context.Result = new JsonResult(new { message = "You Need to be a Coach" })
             {
                 StatusCode = StatusCodes.Status401Unauthorized
             };

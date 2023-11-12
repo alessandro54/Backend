@@ -18,4 +18,9 @@ public class User
 
     [JsonIgnore]
     public Collection<Comment> Comments { get; set; } = new();
+
+    public override string ToString()
+    {
+        return $"User: {Id} {FirstName} {LastName} {Username} {Role}";
+    }
 }

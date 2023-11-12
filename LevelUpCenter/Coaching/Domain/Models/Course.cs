@@ -22,4 +22,9 @@ public class Course
 
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public DateTime? UpdatedAt { get; set; }
+
+    public string ToString()
+    {
+        return $"Course: {Title} {Description} {CoachId}";
+    }
 }

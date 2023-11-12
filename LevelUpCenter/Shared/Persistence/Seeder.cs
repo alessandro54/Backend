@@ -80,7 +80,7 @@ public class Seeder
             FirstName = "Michael",
             LastName = "Campos",
             Role = UserRole.Coach,
-            PasswordHash = BCryptNet.HashPassword("12345678")
+            PasswordHash = BCryptNet.HashPassword("123456")
         });
 
         var coach = new Coach

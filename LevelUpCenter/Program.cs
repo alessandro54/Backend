@@ -84,7 +84,7 @@ builder.Services.AddDbContext<AppDbContext>(
         .LogTo(Console.WriteLine, LogLevel.Information)
         .EnableSensitiveDataLogging()
         .EnableDetailedErrors()
-    );
+);
 
 // Add lowercase routes
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
@@ -108,6 +108,9 @@ builder.Services.AddScoped<IPublicationService, PublicationService>();
 builder.Services.AddScoped<IGameRepository, GameRepository>();
 builder.Services.AddScoped<IGameService, GameService>();
 
+builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+builder.Services.AddScoped<ICourseService, CourseService>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Security Injection Configuration
@@ -123,7 +126,7 @@ builder.Services.AddAutoMapper(
     typeof(LevelUpCenter.Security.Mapping.ModelToResourceProfile),
     typeof(ResourceToModelProfile),
     typeof(LevelUpCenter.Security.Mapping.ResourceToModelProfile)
-    );
+);
 
 var app = builder.Build();
 
@@ -131,7 +134,6 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 {
-
     if (app.Environment.IsDevelopment())
     {
         context.Database.EnsureDeleted();
@@ -153,7 +155,6 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("v1/swagger.json", "v1");
         options.RoutePrefix = "swagger";
     });
-
 }
 
 // Configure CORS
@@ -176,7 +177,10 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
 namespace LevelUpCenter
 {
-    public partial class Program{ }
+    public partial class Program
+    {
+    }
 }
