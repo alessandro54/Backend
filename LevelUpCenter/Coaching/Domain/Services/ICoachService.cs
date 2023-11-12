@@ -9,6 +9,7 @@ public interface ICoachService
 {
     Task<IEnumerable<Coach?>> ListAsync();
     Task<Coach?> GetOneAsync(int id);
-    Task<CoachResponse> RegisterAsync(RegisterRequest model);
+    Task<Coach?> GetOneAsync(User user);
+    Task<CoachResponse> RegisterAsync(RegisterRequest request);
     Task<CoachResponse> SaveAsync(User user);
 }

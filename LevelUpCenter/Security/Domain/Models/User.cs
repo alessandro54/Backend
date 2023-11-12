@@ -13,11 +13,14 @@ public class User
 
     public UserRole Role { get; set; } = UserRole.User;
 
-    [JsonIgnore] public Coach? Coach { get; set; }
-
     [JsonIgnore]
     public string PasswordHash { get; set; }
 
     [JsonIgnore]
     public Collection<Comment> Comments { get; set; } = new();
+
+    public override string ToString()
+    {
+        return $"User: {Id} {FirstName} {LastName} {Username} {Role}";
+    }
 }
