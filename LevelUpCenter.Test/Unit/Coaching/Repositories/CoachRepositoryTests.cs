@@ -2,10 +2,10 @@ using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Coaching.Persistence.Repositories;
 using LevelUpCenter.Security.Domain.Models;
 using LevelUpCenter.Shared.Persistence.Contexts;
-using Xunit;
 using Microsoft.EntityFrameworkCore;
+using Xunit;
 
-namespace LevelUpCenter.Test.Coaching.Persistence.Repositories;
+namespace LevelUpCenter.Test.Unit.Coaching.Repositories;
 
 public class CoachRepositoryTests : IDisposable
 {

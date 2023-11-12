@@ -7,7 +7,7 @@ using Moq;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace LevelUpCenter.Test.Coaching.Controllers;
+namespace LevelUpCenter.Test.Unit.Coaching.Controllers;
 
 public class CoursesControllerTests
 {

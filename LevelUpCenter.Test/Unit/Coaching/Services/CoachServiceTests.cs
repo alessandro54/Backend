@@ -8,7 +8,7 @@ using LevelUpCenter.Security.Domain.Services.Communication;
 using Moq;
 using Xunit;
 
-namespace LevelUpCenter.Test.Coaching.Services;
+namespace LevelUpCenter.Test.Unit.Coaching.Services;
 
 public class CoachServiceTests
 {
@@ -73,7 +73,7 @@ public class CoachServiceTests
 
         var coach = new Coach { Id = 1, Nickname = "sanity", User = user };
 
-        _userServiceMock.Setup(repo => repo.RegisterAsync(model)).ReturnsAsync(user);
+        _userServiceMock.Setup(repo => repo.RegisterAsync(model, UserRole.Coach)).ReturnsAsync(user);
 
         _coachRepositoryMock.Setup(
             repo => repo.AddAsync(

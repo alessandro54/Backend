@@ -27,7 +27,6 @@ public class UsersController : ControllerBase
     [HttpPost("sign-in")]
     public async Task<IActionResult> Authenticate(AuthenticateRequest request)
     {
-
         try
         {
             var response = await _userService.Authenticate(request);
@@ -39,27 +38,12 @@ public class UsersController : ControllerBase
         }
     }
 
-    [AllowAnonymous]
-    [HttpPost("sign-up")]
-    public async Task<IActionResult> Register(RegisterRequest request)
-    {
-        try
-        {
-            await _userService.RegisterAsync(request);
-            return Ok(new { message = "Registration successful" });
-        }
-        catch (Exception ex)
-        {
-            return UnprocessableEntity(new { message = ex.Message });
-        }
-    }
-
     [HttpGet("profile")]
     public Task<IActionResult> GetProfile()
     {
-        var token = (User) HttpContext.Items["User"]!;
+        var user = (User) HttpContext.Items["User"]!;
 
-        var resource = _mapper.Map<User, UserResource>(token);
+        var resource = _mapper.Map<User, UserResource>(user);
 
         return Task.FromResult<IActionResult>(Ok(resource));
     }

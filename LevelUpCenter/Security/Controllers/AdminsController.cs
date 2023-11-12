@@ -17,7 +17,7 @@ public class AdminsController : ControllerBase
         _adminService = adminService;
     }
 
-    [HttpPost("sign-up")]
+    [HttpPost("register")]
     public async Task<IActionResult> AdminRegister(AdminRegisterRequest request)
     {
         try

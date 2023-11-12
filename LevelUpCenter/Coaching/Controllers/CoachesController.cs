@@ -26,6 +26,7 @@ public class CoachesController : ControllerBase
 
     [AllowAnonymous]
     [HttpGet]
+    [SwaggerOperation("Get all coaches")]
     public async Task<IActionResult> GetAll()
     {
         try
@@ -42,6 +43,8 @@ public class CoachesController : ControllerBase
 
     [AllowAnonymous]
     [HttpPost("register")]
+    [SwaggerResponse(201, "Successfully created", typeof(SaveCoachResource))]
+    [SwaggerOperation("Register as a Coach")]
     public async Task<IActionResult> PostAsync([FromBody] RegisterRequest request)
     {
 
@@ -56,10 +59,11 @@ public class CoachesController : ControllerBase
     }
 
     [HttpGet]
-    [Route("{coachId:int}")]
-    public async Task<CoachResource?> GetOneAsync(int coachId)
+    [Route("{id:int}")]
+    [SwaggerOperation("Get a coach by id")]
+    public async Task<CoachResource?> GetOneAsync(int id)
     {
-        var coach = await _coachService.GetOneAsync(coachId);
+        var coach = await _coachService.GetOneAsync(id);
 
         if (coach == null) return null;
 

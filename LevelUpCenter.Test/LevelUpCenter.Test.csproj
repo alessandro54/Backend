@@ -15,6 +15,7 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.11" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
         <PackageReference Include="Moq" Version="4.20.69" />
+        <PackageReference Include="Prime.Web.Utilities" Version="1.1.13" />
         <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
         <PackageReference Include="SpecFlow.xUnit" Version="3.9.22" />
         <PackageReference Include="xunit" Version="2.4.1" />
@@ -35,6 +36,10 @@
 
     <ItemGroup>
       <UpToDateCheckBuild Remove="Features\PublicationsServiceTests.feature.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Unit\Coaching\" />
     </ItemGroup>
 
 </Project>

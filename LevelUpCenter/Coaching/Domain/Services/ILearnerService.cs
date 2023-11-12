@@ -9,6 +9,7 @@ public interface ILearnerService
 {
     Task<IEnumerable<Learner?>> ListAsync();
     Task<Learner?> GetOneAsync(int id);
+    Task<Learner?> GetOneAsync(User user);
     Task<LearnerResponse> RegisterAsync(RegisterRequest request);
     Task<LearnerResponse> SaveAsync(Learner learner);
 }

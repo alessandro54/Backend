@@ -2,6 +2,7 @@ using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Coaching.Domain.Repositories;
 using LevelUpCenter.Coaching.Domain.Services;
 using LevelUpCenter.Coaching.Domain.Services.Communication;
+using LevelUpCenter.Security.Domain.Models;
 using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Domain.Services.Communication;
 
@@ -22,12 +23,17 @@ public class LearnerService : ILearnerService
 
     public async Task<IEnumerable<Learner?>> ListAsync()
     {
-        return await _learnerRepository.ListAsync();
+        return await _learnerRepository.ListAsync() ;
     }
 
     public async Task<Learner?> GetOneAsync(int id)
     {
-        return await _learnerRepository.FindByIdAsync(id);
+        return await _learnerRepository.FindByAsync(id);
+    }
+
+    public async Task<Learner?> GetOneAsync(User user)
+    {
+        return await _learnerRepository.FindByAsync(user);
     }
 
     public async Task<LearnerResponse> RegisterAsync(RegisterRequest request)

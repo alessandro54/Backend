@@ -9,7 +9,6 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace LevelUpCenter.Coaching.Controllers;
 
-
 [Authorize]
 [ApiController]
 [Route("/api/v1/[controller]")]
@@ -39,7 +38,7 @@ public class LearnersController : ControllerBase
             return Ok(resources);
         } catch (Exception ex)
         {
-            return BadRequest(ex.Message);
+            return BadRequest($"An error occurred while processing the request: {ex.Message}");
         }
     }
 

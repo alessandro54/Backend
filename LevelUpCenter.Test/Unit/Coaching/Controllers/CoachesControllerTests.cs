@@ -5,13 +5,12 @@ using LevelUpCenter.Coaching.Domain.Services;
 using LevelUpCenter.Coaching.Domain.Services.Communication;
 using LevelUpCenter.Coaching.Resources.Coach;
 using LevelUpCenter.Security.Domain.Models;
-using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Domain.Services.Communication;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
 
-namespace LevelUpCenter.Test.Coaching.Controllers;
+namespace LevelUpCenter.Test.Unit.Coaching.Controllers;
 
 public class CoachesControllerTests
 {

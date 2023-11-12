@@ -9,7 +9,7 @@ using LevelUpCenter.Security.Exceptions;
 using Moq;
 using Xunit;
 
-namespace LevelUpCenter.Test.Coaching.Services;
+namespace LevelUpCenter.Test.Unit.Coaching.Services;
 
 public class LearnerServiceTests
 {
@@ -56,7 +56,7 @@ public class LearnerServiceTests
 
         var learner = new Learner { Id = 1, Nickname = model.Username, User = user };
 
-        _userServiceMock.Setup(s => s.RegisterAsync(model)).ReturnsAsync(user);
+        _userServiceMock.Setup(s => s.RegisterAsync(model, UserRole.User)).ReturnsAsync(user);
 
         _learnerRepositoryMock.Setup(r =>
             r.AddAsync(It.IsAny<Learner>())

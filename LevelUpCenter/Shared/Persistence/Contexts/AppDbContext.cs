@@ -15,6 +15,7 @@ public class AppDbContext : DbContext
     public DbSet<Learner> Learners { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Course> Courses { get; set; }
+    public DbSet<Enrollment> Enrollments { get; set; }
 
     public AppDbContext(DbContextOptions options) : base(options)
     {

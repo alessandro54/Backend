@@ -30,6 +30,7 @@ public class CoursesController: ControllerBase
 
     [AllowAnonymous]
     [HttpGet]
+    [SwaggerOperation("Get all courses")]
     public async Task<IEnumerable<CourseResource>> GetAllCourses()
     {
         var courses = await _courseService.ListAsync();

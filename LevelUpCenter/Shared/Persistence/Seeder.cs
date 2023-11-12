@@ -3,6 +3,7 @@ using Bogus;
 using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Security.Domain.Models;
 using LevelUpCenter.Shared.Persistence.Contexts;
+using Microsoft.EntityFrameworkCore;
 using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace LevelUpCenter.Shared.Persistence;
@@ -91,5 +92,17 @@ public class Seeder
 
         _context.Coaches.Add(coach);
 
+
+        var course = new Course
+        {
+            Coach = coach,
+            Game = _games.First(),
+            Title = "Valorant Zero to Hero",
+            Price = 13.45,
+            Description = "Learn how to play Valorant like a pro",
+            Published = true
+        };
+
+        _context.Courses.AddAsync(course);
     }
 }

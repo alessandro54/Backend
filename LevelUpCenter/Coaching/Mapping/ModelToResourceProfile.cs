@@ -3,6 +3,7 @@ using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Coaching.Resources;
 using LevelUpCenter.Coaching.Resources.Coach;
 using LevelUpCenter.Coaching.Resources.Course;
+using LevelUpCenter.Coaching.Resources.Enrollment;
 using LevelUpCenter.Coaching.Resources.Game;
 using LevelUpCenter.Coaching.Resources.Learner;
 
@@ -27,5 +28,8 @@ public class ModelToResourceProfile : Profile
         // Learners
         CreateMap<Learner, SaveLearnerResource>();
         CreateMap<Learner, LearnerResource>();
+
+        // Enrollments
+        CreateMap<Enrollment, EnrollmentResource>();
     }
 }

@@ -6,7 +6,6 @@ namespace LevelUpCenter.Security.Domain.Services;
 public interface IUserService
 {
     Task<AuthenticateResponse> Authenticate(AuthenticateRequest model);
-    Task<User> GetProfileAsync(string token);
     Task<IEnumerable<User>> ListAsync();
     Task<User> GetByIdAsync(int id);
     Task<User> RegisterAsync(RegisterRequest model, UserRole role = UserRole.User);
