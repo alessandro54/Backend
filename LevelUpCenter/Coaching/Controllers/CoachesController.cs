@@ -26,7 +26,7 @@ public class CoachesController : ControllerBase
 
     [AllowAnonymous]
     [HttpGet]
-    [SwaggerOperation("Get all coaches")]
+    [SwaggerOperation("[Public] Get all coaches")]
     public async Task<IActionResult> GetAll()
     {
         try

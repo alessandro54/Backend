@@ -5,6 +5,7 @@ using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Domain.Services.Communication;
 using LevelUpCenter.Security.Resources;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace LevelUpCenter.Security.Controllers;
 
@@ -25,6 +26,7 @@ public class UsersController : ControllerBase
 
     [AllowAnonymous]
     [HttpPost("sign-in")]
+    [SwaggerOperation("Login to the application")]
     public async Task<IActionResult> Authenticate(AuthenticateRequest request)
     {
         try
@@ -39,6 +41,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("profile")]
+    [SwaggerOperation("Get my profile")]
     public Task<IActionResult> GetProfile()
     {
         var user = (User) HttpContext.Items["User"]!;
@@ -50,6 +53,7 @@ public class UsersController : ControllerBase
 
     [AuthorizeAdmin]
     [HttpGet]
+    [SwaggerOperation("[Admin] Get all users")]
     public async Task<IActionResult> GetAll()
     {
         var users = await _userService.ListAsync();
@@ -57,7 +61,9 @@ public class UsersController : ControllerBase
         return Ok(resources);
     }
 
+    [AuthorizeAdmin]
     [HttpGet("{id:int}")]
+    [SwaggerOperation("[Admin] Get user by id")]
     public async Task<IActionResult> GetById(int id)
     {
         var user = await _userService.GetByIdAsync(id);

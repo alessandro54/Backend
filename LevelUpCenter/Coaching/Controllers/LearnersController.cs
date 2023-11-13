@@ -26,6 +26,7 @@ public class LearnersController : ControllerBase
 
     [AuthorizeAdmin]
     [HttpGet]
+    [SwaggerOperation("Get all learners")]
     public async Task<IActionResult> GetAll()
     {
         try
@@ -45,6 +46,7 @@ public class LearnersController : ControllerBase
     [AllowAnonymous]
     [HttpPost]
     [Route("/api/v1/register")]
+    [SwaggerOperation("Register as a learner")]
     public async Task<IActionResult> RegisterLearnerAsync([FromBody] RegisterRequest request)
     {
         var result = await _learnerService.RegisterAsync(request);

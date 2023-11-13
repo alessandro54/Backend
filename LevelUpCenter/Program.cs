@@ -11,7 +11,6 @@ using LevelUpCenter.Security.Domain.Repositories;
 using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Persistence.Repositories;
 using LevelUpCenter.Security.Services;
-using LevelUpCenter.Shared.Persistence;
 using LevelUpCenter.Shared.Persistence.Contexts;
 using LevelUpCenter.Shared.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -139,9 +138,9 @@ using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 {
     if (app.Environment.IsDevelopment())
     {
-        context.Database.EnsureDeleted();
+        //context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
-        new Seeder(context).Seed();
+       // new Seeder(context).Seed();
     }
     else
     {

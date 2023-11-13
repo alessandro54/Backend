@@ -25,7 +25,7 @@ public class GamesController : ControllerBase
 
     [AllowAnonymous]
     [HttpGet]
-    [SwaggerOperation("Get all games")]
+    [SwaggerOperation("[Public] Get all games")]
     [SwaggerResponse(StatusCodes.Status200OK, "Returns a list of all available Games.")]
     public async Task<IEnumerable<GameResource>> GetAllAsync()
     {
@@ -37,7 +37,7 @@ public class GamesController : ControllerBase
     [AllowAnonymous]
     [HttpGet]
     [Route("{id:int}")]
-    [SwaggerOperation("Get a game by id")]
+    [SwaggerOperation("[Public] Get a game by id")]
     [SwaggerResponse(StatusCodes.Status200OK, "Returns a Game with the specified id.")]
     [SwaggerResponse(StatusCodes.Status404NotFound, "Game with the specified id was not found.")]
     public async Task<GameResource> GetOneAsync(int id)
@@ -48,7 +48,7 @@ public class GamesController : ControllerBase
     }
 
     [HttpPost]
-    [SwaggerOperation("[Admin only] Create a new game")]
+    [SwaggerOperation("[Admin] Create a new game")]
     [SwaggerResponse(StatusCodes.Status200OK, "Creates a new Game.")]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "Unable to create the Game due to validation error.")]
     public async Task<IActionResult> PostAsync([FromBody] SaveGameResource resource)
@@ -69,7 +69,7 @@ public class GamesController : ControllerBase
 
     [HttpPatch("{id:int}")]
     [HttpPut("{id:int}")]
-    [SwaggerOperation("[Admin only] Update an existing game")]
+    [SwaggerOperation("[Admin] Update an existing game")]
     [SwaggerResponse(StatusCodes.Status200OK, "Updates an existing Game.")]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "Unable to update the Game due to validation error.")]
     public async Task<IActionResult> UpdateAsync(int id, [FromBody] UpdateGameResource resource)
@@ -90,7 +90,7 @@ public class GamesController : ControllerBase
 
     [AuthorizeAdmin]
     [HttpDelete("{id:int}")]
-    [SwaggerOperation("[Admin only] Delete an existing game")]
+    [SwaggerOperation("[Admin] Delete an existing game")]
     [SwaggerResponse(StatusCodes.Status200OK, "Deletes an existing Game.")]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "Unable to delete the Game due to validation error.")]
     public async Task<IActionResult> DeleteAsync(int id)

@@ -23,6 +23,11 @@ public class EnrollmentService : IEnrollmentService
         _unitOfWork = unitOfWork;
     }
 
+    public Task<List<Enrollment>> ListAsync(Learner learner)
+    {
+        return _enrollmentRepository.ListAsync(learner);
+    }
+
     public async Task<EnrollmentResponse> EnrollAsync(Learner learner, int courseId)
     {
         var course = await _courseService.GetOneAsync(courseId);
@@ -31,6 +36,20 @@ public class EnrollmentService : IEnrollmentService
 
         await _enrollmentRepository.AddAsync(enrollment);
         await _unitOfWork.CompleteAsync();
+
+        return new EnrollmentResponse(enrollment);
+    }
+
+    public async Task<EnrollmentResponse> LeaveAsync(Learner learner, int courseId)
+    {
+        var course = await _courseService.GetOneAsync(courseId);
+
+        var enrollment = await _enrollmentRepository.FindByLearnerAndCourseAsync(learner, course!);
+
+        if (enrollment == null)
+            return new EnrollmentResponse("Enrollment not found.");
+
+        _enrollmentRepository.Remove(enrollment);
 
         return new EnrollmentResponse(enrollment);
     }

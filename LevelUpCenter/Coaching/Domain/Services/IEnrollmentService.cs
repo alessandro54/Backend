@@ -5,6 +5,7 @@ namespace LevelUpCenter.Coaching.Domain.Services;
 
 public interface IEnrollmentService
 {
-    Task<EnrollmentResponse> EnrollAsync(Learner learner,
-        int courseId);
+    Task<List<Enrollment>> ListAsync(Learner learner);
+    Task<EnrollmentResponse> EnrollAsync(Learner learner, int courseId);
+    Task<EnrollmentResponse> LeaveAsync(Learner learner, int courseId);
 }
