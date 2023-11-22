@@ -28,6 +28,7 @@ public class UserService : IUserService
     public async Task<AuthenticateResponse> Authenticate(AuthenticateRequest request)
     {
         var user = await _userRepository.FindByUsernameAsync(request.Username);
+
         Console.WriteLine($"Request: {request.Username}, {request.Password}");
         Console.WriteLine($"User: {user.Id}, {user.FirstName}, {user.LastName}, {user.Username}, {user.PasswordHash}");
 
