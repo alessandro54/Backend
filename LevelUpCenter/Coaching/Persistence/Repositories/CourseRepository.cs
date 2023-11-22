@@ -14,7 +14,11 @@ public class CourseRepository : BaseRepository, ICourseRepository
 
     public async Task<IEnumerable<Course>> ListAsync()
     {
-        return await _context.Courses.ToListAsync();
+        return await _context
+            .Courses
+            .Include(c => c.Coach)
+            .Include(c => c.Game)
+            .ToListAsync();
     }
 
     public async Task<Course?> FindByIdAsync(int id)

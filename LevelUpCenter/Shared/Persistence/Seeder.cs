@@ -87,7 +87,9 @@ public class Seeder
         var coach = new Coach
         {
             Nickname = "coach777",
-            User = user.Entity
+            User = user.Entity,
+            ProfilePictureUrl = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7316d49a-68cb-4b52-89ff-b2c5c4879552/daboato-ce46f76b-978f-47ec-95eb-70c3e9b6003c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzczMTZkNDlhLTY4Y2ItNGI1Mi04OWZmLWIyYzVjNDg3OTU1MlwvZGFib2F0by1jZTQ2Zjc2Yi05NzhmLTQ3ZWMtOTVlYi03MGMzZTliNjAwM2MucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.X8pumW7HppiNuh8mFAusND8eOIbWmiyFTPHEVVTCGAc",
+            TwitchUrl = "https://www.twitch.tv/coach777",
         };
 
         _context.Coaches.Add(coach);

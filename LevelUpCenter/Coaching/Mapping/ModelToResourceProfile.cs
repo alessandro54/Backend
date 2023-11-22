@@ -19,7 +19,10 @@ public class ModelToResourceProfile : Profile
         CreateMap<Game, UpdateGameResource>();
         CreateMap<Game, GameResource>();
 
+        // Courses
         CreateMap<Course, CourseResource>();
+        CreateMap<Coach, CourseCoachResource>();
+        CreateMap<Game, CourseGameResource>();
 
         // Coaches
         CreateMap<Coach, SaveCoachResource>();
