@@ -17,7 +17,6 @@ public class CoachRepository : BaseRepository, ICoachRepository
     {
         return await _context.Coaches.ToListAsync();
     }
-
     public async Task<Coach?> FindByIdAsync(int id)
     {
         return await _context.Coaches
@@ -33,17 +32,14 @@ public class CoachRepository : BaseRepository, ICoachRepository
             .Include(c => c.Courses)
             .FirstOrDefaultAsync(p => p!.User == user);
     }
-
     public async Task AddAsync(Coach coach)
     {
         await _context.Coaches.AddAsync(coach);
     }
-
     public void Update(Coach coach)
     {
-        //throw new NotImplementedException();
+        _context.Coaches.Update(coach);
     }
-
     public void Remove(Coach coach)
     {
         _context.Coaches.Remove(coach);

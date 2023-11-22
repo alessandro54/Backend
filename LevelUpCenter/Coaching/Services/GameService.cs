@@ -81,6 +81,7 @@ public class GameService : IGameService
     public async Task<GameResponse> DeleteAsync(int id)
     {
         var existingGame = await _gameRepository.FindByIdAsync(id);
+
         if (existingGame == null)
             return new GameResponse("Publication not found.");
 

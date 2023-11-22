@@ -1,10 +1,8 @@
-using System.ComponentModel;
 using AutoMapper;
 using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Coaching.Domain.Services;
 using LevelUpCenter.Coaching.Resources.Coach;
 using LevelUpCenter.Security.Authorization.Attributes;
-using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Domain.Services.Communication;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -18,18 +16,17 @@ namespace LevelUpCenter.Coaching.Controllers;
 public class CoachesController : ControllerBase
 {
     private readonly ICoachService _coachService;
-    private readonly IUserService _userService;
     private readonly IMapper _mapper;
 
-    public CoachesController(ICoachService coachService, IUserService userService, IMapper mapper)
+    public CoachesController(ICoachService coachService, IMapper mapper)
     {
         _coachService = coachService;
-        _userService = userService;
         _mapper = mapper;
     }
 
     [AllowAnonymous]
     [HttpGet]
+    [SwaggerOperation("[Public] Get all coaches")]
     public async Task<IActionResult> GetAll()
     {
         try
@@ -45,7 +42,9 @@ public class CoachesController : ControllerBase
     }
 
     [AllowAnonymous]
-    [HttpPost]
+    [HttpPost("register")]
+    [SwaggerResponse(201, "Successfully created", typeof(SaveCoachResource))]
+    [SwaggerOperation("Register as a Coach")]
     public async Task<IActionResult> PostAsync([FromBody] RegisterRequest request)
     {
 
@@ -60,10 +59,11 @@ public class CoachesController : ControllerBase
     }
 
     [HttpGet]
-    [Route("{coachId:int}")]
-    public async Task<CoachResource?> GetOneAsync(int coachId)
+    [Route("{id:int}")]
+    [SwaggerOperation("Get a coach by id")]
+    public async Task<CoachResource?> GetOneAsync(int id)
     {
-        var coach = await _coachService.GetOneAsync(coachId);
+        var coach = await _coachService.GetOneAsync(id);
 
         if (coach == null) return null;
 

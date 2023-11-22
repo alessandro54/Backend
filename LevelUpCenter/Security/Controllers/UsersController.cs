@@ -5,6 +5,7 @@ using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Domain.Services.Communication;
 using LevelUpCenter.Security.Resources;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace LevelUpCenter.Security.Controllers;
 
@@ -25,9 +26,9 @@ public class UsersController : ControllerBase
 
     [AllowAnonymous]
     [HttpPost("sign-in")]
+    [SwaggerOperation("Login to the application")]
     public async Task<IActionResult> Authenticate(AuthenticateRequest request)
     {
-
         try
         {
             var response = await _userService.Authenticate(request);
@@ -39,33 +40,20 @@ public class UsersController : ControllerBase
         }
     }
 
-    [AllowAnonymous]
-    [HttpPost("sign-up")]
-    public async Task<IActionResult> Register(RegisterRequest request)
-    {
-        try
-        {
-            await _userService.RegisterAsync(request);
-            return Ok(new { message = "Registration successful" });
-        }
-        catch (Exception ex)
-        {
-            return UnprocessableEntity(new { message = ex.Message });
-        }
-    }
-
     [HttpGet("profile")]
+    [SwaggerOperation("Get my profile")]
     public Task<IActionResult> GetProfile()
     {
-        var token = (User) HttpContext.Items["User"]!;
+        var user = (User) HttpContext.Items["User"]!;
 
-        var resource = _mapper.Map<User, UserResource>(token);
+        var resource = _mapper.Map<User, UserResource>(user);
 
         return Task.FromResult<IActionResult>(Ok(resource));
     }
 
     [AuthorizeAdmin]
     [HttpGet]
+    [SwaggerOperation("[Admin] Get all users")]
     public async Task<IActionResult> GetAll()
     {
         var users = await _userService.ListAsync();
@@ -73,7 +61,9 @@ public class UsersController : ControllerBase
         return Ok(resources);
     }
 
+    [AuthorizeAdmin]
     [HttpGet("{id:int}")]
+    [SwaggerOperation("[Admin] Get user by id")]
     public async Task<IActionResult> GetById(int id)
     {
         var user = await _userService.GetByIdAsync(id);

@@ -1,6 +1,7 @@
 using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Domain.Services.Communication;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace LevelUpCenter.Security.Controllers;
 
@@ -17,7 +18,8 @@ public class AdminsController : ControllerBase
         _adminService = adminService;
     }
 
-    [HttpPost("sign-up")]
+    [HttpPost("register")]
+    [SwaggerOperation("Register as an admin")]
     public async Task<IActionResult> AdminRegister(AdminRegisterRequest request)
     {
         try

@@ -99,6 +99,9 @@ builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSet
 builder.Services.AddScoped<ICoachRepository, CoachRepository>();
 builder.Services.AddScoped<ICoachService, CoachService>();
 
+builder.Services.AddScoped<ILearnerRepository, LearnerRepository>();
+builder.Services.AddScoped<ILearnerService, LearnerService>();
+
 builder.Services.AddScoped<IPublicationRepository, PublicationRepository>();
 builder.Services.AddScoped<IPublicationService, PublicationService>();
 
@@ -108,8 +111,10 @@ builder.Services.AddScoped<IGameService, GameService>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<ICourseService, CourseService>();
 
+builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
+builder.Services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-//
 
 // Security Injection Configuration
 builder.Services.AddScoped<IJwtHandler, JwtHandler>();
@@ -134,9 +139,9 @@ using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 {
     if (app.Environment.IsDevelopment())
     {
-        context.Database.EnsureDeleted();
+        //context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
-        new Seeder(context).Seed();
+       // new Seeder(context).Seed();
     }
     else
     {
@@ -145,15 +150,12 @@ using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 }
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("v1/swagger.json", "v1");
-        options.RoutePrefix = "swagger";
-    });
-}
+    options.SwaggerEndpoint("v1/swagger.json", "v1");
+    options.RoutePrefix = "swagger";
+});
 
 // Configure CORS
 app.UseCors(x => x

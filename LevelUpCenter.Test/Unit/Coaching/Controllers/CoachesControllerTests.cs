@@ -5,13 +5,12 @@ using LevelUpCenter.Coaching.Domain.Services;
 using LevelUpCenter.Coaching.Domain.Services.Communication;
 using LevelUpCenter.Coaching.Resources.Coach;
 using LevelUpCenter.Security.Domain.Models;
-using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Domain.Services.Communication;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
 
-namespace LevelUpCenter.Test.Coaching.Controllers;
+namespace LevelUpCenter.Test.Unit.Coaching.Controllers;
 
 public class CoachesControllerTests
 {
@@ -34,14 +33,12 @@ public class CoachesControllerTests
     {
         // Arrange
         var mockCoachesService = new Mock<ICoachService>();
-        var mockUserService = new Mock<IUserService>();
         var mockMapper = new Mock<IMapper>();
 
         var controller = new CoachesController(
             mockCoachesService.Object,
-            mockUserService.Object,
             mockMapper.Object
-            );
+        );
 
         var request = new RegisterRequest
             { FirstName = "Alessandro", LastName = "Chumpitaz", Username = "sanity", Password = "123456" };
@@ -56,11 +53,11 @@ public class CoachesControllerTests
 
         mockCoachesService
             .Setup(service => service.RegisterAsync(request))
-            .ReturnsAsync(expectedResult);
+                .ReturnsAsync(expectedResult);
 
         mockMapper
             .Setup(mapper => mapper.Map<Coach, SaveCoachResource>(expectedResult.Resource))
-            .Returns(expectedCoachResource);
+                .Returns(expectedCoachResource);
 
         // Act
         var result = await controller.PostAsync(request);
@@ -71,7 +68,6 @@ public class CoachesControllerTests
 
         var coachResource = Assert.IsType<SaveCoachResource>(createdResult.Value);
         Assert.Same(expectedCoachResource, coachResource);
-
     }
 
     [Fact]
@@ -83,20 +79,19 @@ public class CoachesControllerTests
 
         var controller = new CoachesController(
             mockCoachService.Object,
-            Mock.Of<IUserService>(),
             mockMapper.Object
-            );
+        );
 
         var expectedCoach = _coach;
         var expectedCoachResource = new CoachResource { Nickname = "sanity44" };
 
         mockCoachService
             .Setup(service => service.GetOneAsync(_coach.Id))
-            .ReturnsAsync(expectedCoach);
+                .ReturnsAsync(expectedCoach);
 
         mockMapper
             .Setup(mapper => mapper.Map<Coach, CoachResource>(expectedCoach))
-            .Returns(expectedCoachResource);
+                .Returns(expectedCoachResource);
 
         // Act
         var result = await controller.GetOneAsync(_coach.Id);
@@ -114,11 +109,7 @@ public class CoachesControllerTests
         var mockCoachService = new Mock<ICoachService>();
         var mockMapper = new Mock<IMapper>();
 
-        var controller = new CoachesController(
-            mockCoachService.Object,
-            Mock.Of<IUserService>(),
-            mockMapper.Object
-            );
+        var controller = new CoachesController(mockCoachService.Object, mockMapper.Object);
 
         mockCoachService
             .Setup(service => service.GetOneAsync(_coach.Id))

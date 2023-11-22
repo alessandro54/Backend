@@ -30,6 +30,7 @@ public class CoursesController: ControllerBase
 
     [AllowAnonymous]
     [HttpGet]
+    [SwaggerOperation("[Public] Get all courses")]
     public async Task<IEnumerable<CourseResource>> GetAllCourses()
     {
         var courses = await _courseService.ListAsync();
@@ -40,6 +41,7 @@ public class CoursesController: ControllerBase
 
     [AllowAnonymous]
     [HttpGet("{id}")]
+    [SwaggerOperation("[Public] Get one course")]
     public async Task<IActionResult> GetOneCourse(int id)
     {
         var course = await _courseService.GetOneAsync(id);
@@ -54,6 +56,7 @@ public class CoursesController: ControllerBase
 
     [AuthorizeCoach]
     [HttpPost]
+    [SwaggerOperation("[Coach] Create a course")]
     public async Task<IActionResult> CreateCourse([FromBody] SaveCourseResource resource)
     {
         if (!ModelState.IsValid)
@@ -73,7 +76,8 @@ public class CoursesController: ControllerBase
     }
 
     [AuthorizeCoach]
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:int}")]
+    [SwaggerOperation("[Coach] Delete a course")]
     public async Task<IActionResult> DeleteCourse(int id)
     {
         var user = (User) HttpContext.Items["User"]!;

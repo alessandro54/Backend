@@ -2,10 +2,10 @@ using LevelUpCenter.Coaching.Domain.Models;
 using LevelUpCenter.Coaching.Persistence.Repositories;
 using LevelUpCenter.Security.Domain.Models;
 using LevelUpCenter.Shared.Persistence.Contexts;
-using Xunit;
 using Microsoft.EntityFrameworkCore;
+using Xunit;
 
-namespace LevelUpCenter.Test.Coaching.Persistence.Repositories;
+namespace LevelUpCenter.Test.Unit.Coaching.Repositories;
 
 public class CoachRepositoryTests : IDisposable
 {
@@ -45,6 +45,49 @@ public class CoachRepositoryTests : IDisposable
         // Assert
         Assert.NotNull(coach);
         Assert.Equal("test", coach.Nickname);
+    }
+
+    [Fact]
+    public async Task AddAsync_ShouldAddCoach()
+    {
+        // Arrange
+        var coach = new Coach { Id = 3, Nickname = "test3", User = new User { Id = 3, FirstName = "John", LastName = "Doe", Username = "testtest3", PasswordHash = "@!$!%215!@%@!%!@ads" } };
+
+        // Act
+        await _coachRepository.AddAsync(coach);
+        await _context.SaveChangesAsync();
+
+        // Assert
+        Assert.Equal(3, _context.Coaches.Count());
+    }
+
+    [Fact]
+    public async Task Update_ShouldUpdateCoach()
+    {
+        // Arrange
+        var coach = await _coachRepository.FindByIdAsync(1);
+        coach!.Nickname = "test4";
+
+        // Act
+        _coachRepository.Update(coach);
+        await _context.SaveChangesAsync();
+
+        // Assert
+        Assert.Equal("test4", coach.Nickname);
+    }
+
+    [Fact]
+    public async Task Remove_ShouldRemoveCoach()
+    {
+        // Arrange
+        var coach = await _coachRepository.FindByIdAsync(1);
+
+        // Act
+        _coachRepository.Remove(coach!);
+        await _context.SaveChangesAsync();
+
+        // Assert
+        Assert.Equal(1, _context.Coaches.Count());
     }
 
     public void Dispose()
