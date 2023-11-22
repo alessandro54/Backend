@@ -1,4 +1,6 @@
-﻿namespace LevelUpCenter.Security.Domain.Services.Communication;
+﻿using LevelUpCenter.Security.Domain.Models;
+
+namespace LevelUpCenter.Security.Domain.Services.Communication;
 
 public class AuthenticateResponse
 {
@@ -7,4 +9,5 @@ public class AuthenticateResponse
     public string LastName { get; set; }
     public string Username { get; set; }
     public string Token { get; set; }
+    public UserRole Role { get; set; }
 }
