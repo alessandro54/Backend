@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LevelUpCenter.Coaching.Controllers;
 
 [ApiController]
-[Route("/")]
+[Route("/api/v1/home")]
 public class HomeController
 {
     [AllowAnonymous]

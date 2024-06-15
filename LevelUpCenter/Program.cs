@@ -11,7 +11,6 @@ using LevelUpCenter.Security.Domain.Repositories;
 using LevelUpCenter.Security.Domain.Services;
 using LevelUpCenter.Security.Persistence.Repositories;
 using LevelUpCenter.Security.Services;
-using LevelUpCenter.Shared.Persistence;
 using LevelUpCenter.Shared.Persistence.Contexts;
 using LevelUpCenter.Shared.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -170,11 +169,31 @@ app.UseMiddleware<ErrorHandlerMiddleware>();
 // Configure JWT Handling
 app.UseMiddleware<JwtMiddleware>();
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
+
+app.MapControllers();
+
+app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(_ => { });
+
+app.Use((ctx, next) =>
+{
+    if (ctx.Request.Path.StartsWithSegments("/api"))
+    {
+        ctx.Response.StatusCode = 404;
+        return Task.CompletedTask;
+    }
+
+    return next();
+});
+
+app.UseSpa(spa =>
+{
+    spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+});
 
 app.Run();
 
