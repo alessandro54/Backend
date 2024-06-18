@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
+import {Card, CardContent, CardDescription, CardTitle} from "@/components/ui/card.tsx";
+import {Avatar, AvatarImage} from "@/components/ui/avatar.tsx";
 
 type Coach = {
     nickname: string,
@@ -7,7 +9,7 @@ type Coach = {
 }
 const CoachesPage = () => {
     const [coaches, setCoaches] = useState<Coach[]>([])
-    
+
     const fetchCoaches = async () => {
         return await fetch('/api/v1/coaches')
     }
@@ -19,13 +21,23 @@ const CoachesPage = () => {
     return (
         <div>
             <h1>Coaches</h1>
-            <div>
+            <div className="grid grid-cols-3 p-3">
                 {coaches.map(coach => (
-                    <div key={coach.nickname}>
-                        <img src={coach.profilePictureUrl} alt={coach.nickname} />
-                        <h2>{coach.nickname}</h2>
-                        <a href={coach.twitchUrl}>Twitch</a>
-                    </div>
+                    <Card className="p-4" key={coach.nickname}>
+                        <div>
+                            <CardTitle>
+                                {coach.nickname}
+                            </CardTitle>
+                            <CardDescription>
+                                <a className="text-xs" href={coach.twitchUrl}>{coach.twitchUrl}</a>
+                            </CardDescription>
+                            <CardContent>
+                                <Avatar>
+                                    <AvatarImage src={coach.profilePictureUrl} alt={coach.nickname}/>
+                                </Avatar>
+                            </CardContent>
+                        </div>
+                    </Card>
                 ))}
             </div>
         </div>
